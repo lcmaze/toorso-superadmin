@@ -42,7 +42,7 @@ import {MatRadioModule} from '@angular/material/radio';
     MatInputModule,
     MatSlideToggleModule,
     MatSnackBarModule,
-    MatRadioModule
+    MatRadioModule,
   ]
 })
 export class MaterialModule { }

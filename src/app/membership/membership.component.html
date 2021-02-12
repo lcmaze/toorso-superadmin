@@ -1,0 +1,216 @@
+<div class="box mb-3">
+    <div class="head p-3">
+        <h6 class="mb-0">Manage Membership Category</h6>
+    </div>
+    <div class="body px-3">
+        <div class="row">
+            <div class="col-md-6 p-3">
+                <div class="searchbox mb-3">
+                    <label>Choose Client</label>
+                    <input type="text" class="form-control" placeholder="Search Here">
+                    <div class="suggestion d-none">
+                        <li>Kanmadam Resort</li>
+                        <li>Kanmadam Resort</li>
+                        <li>Kanmadam Resort</li>
+                        <li>Kanmadam Resort</li>
+                        <li>Kanmadam Resort</li>
+                        <li>Kanmadam Resort</li>
+                    </div>
+                </div>
+                <div class="textur mb-3">
+                    <label>Database Status</label>
+                    <select class="form-control">
+                        <option selected>Active</option>
+                        <option>Deactive</option>
+                    </select>
+                </div>
+                <div class="textur mb-3">
+                    <label>Approved Category</label>
+                    <select class="form-control">
+                        <option selected>Hotels, Resorts & Homestays</option>
+                    </select>
+                </div>
+                <div class="textur">
+                    <label>Membership Contract Period</label>
+                    <app-date-range></app-date-range>
+                </div>
+            </div>
+            <div class="col-md-6 p-3">
+                <div class="textur mb-3">
+                    <label>Membership Approval</label>
+                    <select class="form-control">
+                        <option selected>Approved</option>
+                        <option>Deactivated</option>
+                    </select>
+                </div>
+                <div class="textur mb-3">
+                    <label>Toorso Verified Status</label>
+                    <select class="form-control">
+                        <option selected>Verified</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="textur mb-3">
+                            <label>Membership Category</label>
+                            <select class="form-control">
+                                <option selected>Premium</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="textur mb-3">
+                            <label>Membership Amount</label>
+                            <input type="text" class="form-control" value="3000">
+                        </div>
+                    </div>
+                </div>
+                <div class="textur mb-3">
+                    <label>Approved Subcategories</label>
+                    <div class="d-flex mb-2">
+                        <input type="text" class="form-control mr-2" placeholder="" name="vendor_keywords">
+                        <button class="btn btn-dark">Add</button>
+                    </div>
+                    <mat-chip-list>
+                        <mat-chip>name
+                            <mat-icon matChipRemove>cancel</mat-icon>
+                        </mat-chip>
+                        <mat-chip>name
+                            <mat-icon matChipRemove>cancel</mat-icon>
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <div class="box">
+            <div class="head px-3 py-2">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h6 class="mb-0">Paid Promotion Category</h6>
+                    <select class="form-control" style="width:100px">
+                    <option selected>Active</option>
+                </select>
+                </div>
+            </div>
+            <div class="body px-3">
+                <div class="row p-2">
+                    <div class="col-md-7 p-2">
+                        <div class="textur">
+                            <label>Paid Promotion Period</label>
+                            <app-date-range></app-date-range>
+                        </div>
+                    </div>
+                    <div class="col-md-5 p-2">
+                        <div class="textur">
+                            <label>Membership Amount</label>
+                            <input type="text" class="form-control" value="3000">
+                        </div>
+                    </div>
+                    <div class="col-12 p-2">
+                        <div class="textur">
+                            <label>Banner Text</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-7 p-2">
+                        <label>Room Type</label>
+                        <select name="" id="" class="form-control">
+                            <option value="1" selected>Deluxe Room</option>
+                        </select>
+                    </div>
+                    <div class="col-md-5 p-2">
+                        <label>Discount %</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="col-md-7 p-2">
+                        <label>Offer Duration</label>
+                        <app-date-range></app-date-range>
+                    </div>
+                    <div class="col-md-5 p-2">
+                        <label>Badge</label>
+                        <div class="w-100 mt-2">
+                            <mat-radio-group aria-label="Select an option" name="banner_color" color="primary" class="mb-4" required>
+                                <mat-radio-button value="#c62828">Red&nbsp;</mat-radio-button>
+                                <mat-radio-button value="#ffeb3b">Yellow</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                    </div>
+                    <div class="col-md-6 p-2">
+                        <img class="w-100" src="assets/images/offer.jpeg" alt="">
+                    </div>
+                    <div class="col-md-6 p-2">
+                        <button class="btn btn-danger mt-2 mr-2">Remove</button>
+                        <button class="btn btn-success mt-2">Upload</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <div class="box">
+            <div class="head px-3 py-2">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h6 class="mb-0">Sponsored Ads - Places Category</h6>
+                    <select class="form-control" style="width:100px">
+                    <option selected>Active</option>
+                </select>
+                </div>
+            </div>
+            <div class="body px-3">
+                <div class="row p-2">
+                    <div class="col-md-7 p-2">
+                        <div class="textur">
+                            <label>Advertisement Period</label>
+                            <app-date-range></app-date-range>
+                        </div>
+                    </div>
+                    <div class="col-md-5 p-2">
+                        <div class="textur">
+                            <label>Amount</label>
+                            <input type="text" class="form-control" value="3000">
+                        </div>
+                    </div>
+                    <div class="col-12 p-2">
+                        <div class="textur">
+                            <label>Ads Link</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-7 p-2">
+                        <label>Logo Appear on Home Page</label>
+                        <select name="" id="" class="form-control">
+                            <option value="1" selected>Yes</option>
+                        </select>
+                    </div>
+                    <div class="col-md-7 p-2">
+                        <label>Choose Places</label>
+                        <select name="" id="" class="form-control">
+                            <option value="1" selected>Athirapilly Waterfalls</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 p-2">
+                        <img class="w-100" src="assets/images/offer.jpeg" alt="">
+                    </div>
+                    <div class="col-md-6 p-2">
+                        <button class="btn btn-danger mt-2 mr-2">Remove</button>
+                        <button class="btn btn-success mt-2">Upload</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="box mb-3">
+    <div class="head p-3">
+        <h6 class="mb-0">Info</h6>
+    </div>
+    <div class="body p-3">
+        <app-info></app-info>
+    </div>
+</div>

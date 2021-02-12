@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListingRoutingModule } from './listing-routing.module';
-import { ListingComponent } from './listing.component';
+
+import { MembershipRoutingModule } from './membership-routing.module';
+import { MembershipComponent } from './membership.component';
 import { MaterialModule } from '../components/material/material.module';
 import { CommonsModule } from '../components/commons/commons.module';
+import { InfoComponent } from './info/info.component';
 
 
 @NgModule({
-  declarations: [ListingComponent],
+  declarations: [MembershipComponent, InfoComponent],
   imports: [
     CommonModule,
-    ListingRoutingModule,
+    MembershipRoutingModule,
     MaterialModule,
     CommonsModule
   ]
 })
-export class ListingModule { }
+export class MembershipModule { }

@@ -1,0 +1,39 @@
+label {
+    color: #7e7e7e;
+    font-size: 14px;
+    font-family: 'Open Sans SB';
+    .material-icons {
+        font-size: 21px;
+        vertical-align: text-top;
+    }
+}
+
+.box {
+    box-shadow: 0 4px 8px 0 #00000030;
+    background-color: #fff;
+    .head {
+        background-color: #0274B9;
+        h6 {
+            color: #fff;
+        }
+    }
+    .body {
+        font-size: 14px;
+        .searchbox {
+            .suggestion {
+                background-color: #fff;
+                box-shadow: 0 4px 8px 0 #00000030;
+                position: absolute;
+                width: 100%;
+                li {
+                    list-style: none;
+                    padding: 8px 12px;
+                    cursor: pointer;
+                }
+                li:hover {
+                    background-color: #00000020;
+                }
+            }
+        }
+    }
+}
