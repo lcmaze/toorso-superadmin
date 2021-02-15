@@ -6,6 +6,7 @@ const routes: Routes = [
   { path: 'listing', loadChildren: () => import('./listing/listing.module').then(m => m.ListingModule) },
   { path: 'membership', loadChildren: () => import('./membership/membership.module').then(m => m.MembershipModule) },
   { path: 'pending', loadChildren: () => import('./pending/pending.module').then(m => m.PendingModule) },
+  { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
 ];
 
 @NgModule({
