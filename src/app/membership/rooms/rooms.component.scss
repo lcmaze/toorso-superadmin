@@ -1,0 +1,21 @@
+.bottom-options {
+    background-color: #fff;
+    border-top: 1px solid #eaeaea;
+    display: flex;
+    justify-content: flex-end;
+}
+
+// .edit-box {
+//     border: 1px solid #7e7e7e;
+// }
+.cnt {
+    background-color: #fff;
+    label {
+        color: #7e7e7e;
+        font-size: 14px;
+        font-family: 'Open Sans SB';
+    }
+    .form-control {
+        font-size: 14px;
+    }
+}
