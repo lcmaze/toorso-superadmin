@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MainService } from '../services/main.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private mainData: MainService) { }
 
   ngOnInit() {
+    this.getCounts();
+  }
+
+  details: any;
+  getCounts(){
+    this.mainData.get(`api/super/get-counts`).subscribe(data => {
+      this.details = data;
+    })
   }
 
 }

@@ -1,0 +1,20 @@
+<form #addVendor="ngForm">
+    <h3 class="mb-3">Register New Vendor</h3>
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <input type="text" class="form-control" placeholder="Name" name="name" ngModel required>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <input type="text" class="form-control" placeholder="Email" name="email" ngModel required>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-sm-12 col-md-6">
+            <input type="text" class="form-control" placeholder="Password" name="password" ngModel required>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <city-filter (city)="city = $event"></city-filter>
+        </div>
+    </div>
+    <button class="btn btn-success mt-3" (click)="submitDetails(addVendor)">Create</button>
+</form>

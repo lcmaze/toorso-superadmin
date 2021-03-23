@@ -1,6 +1,6 @@
-<ng-container>
-    <!-- <app-header></app-header> -->
-    <!-- <app-head-title></app-head-title> -->
+<ng-container  *ngIf="loginStatus">
+    <app-header></app-header>
+    <app-head-title></app-head-title>
     <div style="background-color:#fafafa">
         <div class="w-80">
             <div class="row">
@@ -13,5 +13,6 @@
             </div>
         </div>
     </div>
-    <!-- <app-footer></app-footer> -->
+    <app-footer></app-footer>
 </ng-container>
+<login *ngIf="!loginStatus"></login>

@@ -8,15 +8,22 @@ import { CommonsModule } from '../components/commons/commons.module';
 import { InfoComponent } from './info/info.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { FeaturesComponent } from './features/features.component';
+import { AddVendorComponent } from './add-vendor/add-vendor.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PromotionsComponent } from './promotions/promotions.component';
+import { UploadComponent } from './upload/upload.component';
+import { RoomWrapperComponent } from './room-wrapper/room-wrapper.component';
 
 
 @NgModule({
-  declarations: [MembershipComponent, InfoComponent, RoomsComponent, FeaturesComponent],
+  declarations: [MembershipComponent, InfoComponent, RoomsComponent, FeaturesComponent, AddVendorComponent, PromotionsComponent, UploadComponent, RoomWrapperComponent],
   imports: [
     CommonModule,
     MembershipRoutingModule,
     MaterialModule,
-    CommonsModule
+    CommonsModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class MembershipModule { }

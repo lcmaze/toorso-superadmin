@@ -3,52 +3,52 @@
         <div class="box">
             <div class="head">Subcategories</div>
             <div class="cnt px-2">
-                <div class="d-flex my-2">
-                    <input type="text" class="form-control mr-2" placeholder="Name">
-                    <button class="btn btn-dark">Add</button>
-                </div>
-                <label class="w-100 border-bottom p-2">Hotels <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2">Hotel Apartments <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2">Homestays <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2">Resort <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2">House Boat <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2">Villa <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2">Flat <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2">Farm House <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2">Dormitory <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
+                <form class="d-flex my-2" #categoryForm="ngForm">
+                    <input type="text" class="form-control mr-2" placeholder="Name" name="category_name" ngModel required>
+                    <button class="btn btn-dark" (click)="addCategory(categoryForm, 'category')">Add</button>
+                </form>
+                <label class="w-100 border-bottom p-2" *ngFor="let f of categories">
+                    {{f.category_name}} 
+                    <button class="btn px-0 py-0 float-right" (click)="deleteCategory(f.category_id, 'category')">
+                        <span class="material-icons text-danger">close</span>
+                    </button>
+                </label>
             </div>
         </div>
 
         <div class="box mt-4">
             <div class="head">Food Availablities</div>
             <div class="cnt px-2">
-                <div class="d-flex my-2">
-                    <input type="text" class="form-control mr-2" placeholder="Icon">
-                    <input type="text" class="form-control mr-2" placeholder="Name">
-                    <button class="btn btn-dark">Add</button>
-                </div>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Breakfast <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Lunch <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Dinner <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Coffee with Snacks <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Own Cooking <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
+                <form class="d-flex my-2" #foodForm="ngForm">
+                    <input type="text" class="form-control mr-2" placeholder="Icon" name="icon" ngModel required>
+                    <input type="text" class="form-control mr-2" placeholder="Name" name="food_name" ngModel required>
+                    <button class="btn btn-dark" (click)="addCategory(foodForm, 'food')">Add</button>
+                </form>
+                <label class="w-100 border-bottom p-2" *ngFor="let f of foods">
+                    <span class="filterfont mr-sm-1">{{f.icon}}</span> 
+                    {{f.food_name}} 
+                    <button class="btn px-0 py-0 float-right" (click)="deleteCategory(f.food_id, 'food')">
+                        <span class="material-icons text-danger">close</span>
+                    </button>
+                </label>
             </div>
         </div>
 
         <div class="box mt-4">
             <div class="head">Transportation Facilities</div>
             <div class="cnt px-2">
-                <div class="d-flex my-2">
-                    <input type="text" class="form-control mr-2" placeholder="Icon">
-                    <input type="text" class="form-control mr-2" placeholder="Name">
-                    <button class="btn btn-dark">Add</button>
-                </div>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Rent a Car <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Car with Dirver <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> 4 x 4 with Driver <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Luxary 4 x 4 with Driver <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> 12 Seat Traveller <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Pickup & Drop near City <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
+                <form class="d-flex my-2" #transportationForm="ngForm">
+                    <input type="text" class="form-control mr-2" placeholder="Icon" name="icon" ngModel required>
+                    <input type="text" class="form-control mr-2" placeholder="Name" name="transportation_name" ngModel required>
+                    <button class="btn btn-dark" (click)="addCategory(transportationForm, 'transportation')">Add</button>
+                </form>
+                <label class="w-100 border-bottom p-2" *ngFor="let f of transportations">
+                    <span class="filterfont mr-sm-1">{{f.icon}}</span> 
+                    {{f.transportation_name}} 
+                    <button class="btn px-0 py-0 float-right" (click)="deleteCategory(f.transportation_id, 'transportation')">
+                        <span class="material-icons text-danger">close</span>
+                    </button>
+                </label>
             </div>
         </div>
     </div>
@@ -56,34 +56,18 @@
         <div class="box">
             <div class="head">Facilities</div>
             <div class="cnt px-2">
-                <div class="d-flex my-2">
-                    <input type="text" class="form-control mr-2" placeholder="Icon">
-                    <input type="text" class="form-control mr-2" placeholder="Name">
-                    <button class="btn btn-dark">Add</button>
-                </div>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Trekking <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Wildlife Sanctuary <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Fishing <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Night Camping <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Tree House <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Bar <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Credit Card <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Beach <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Disabled Facilities <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Fitness <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Internet / Wifi <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Air Conditioned <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Meeting Room <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Party Hall <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Free Parking <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Concierge <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Organic Food <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Sisha / Hookah <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Water Sports <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Restaurant <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Safe Locker <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Spa <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
-                <label class="w-100 border-bottom p-2"><span class="filterfont mr-sm-1">a</span> Swimming Pool <button class="btn px-0 py-0 float-right"><span class="material-icons text-danger">close</span></button></label>
+                <form class="d-flex my-2" #facilityForm="ngForm">
+                    <input type="text" class="form-control mr-2" placeholder="Icon" name="icon" ngModel required>
+                    <input type="text" class="form-control mr-2" placeholder="Name" name="facility_name" ngModel required>
+                    <button class="btn btn-dark" (click)="addCategory(facilityForm, 'facility')">Add</button>
+                </form>
+                <label class="w-100 border-bottom p-2" *ngFor="let f of facilities">
+                    <span class="filterfont mr-sm-1">{{f.icon}}</span> 
+                    {{f.facility_name}} 
+                    <button class="btn px-0 py-0 float-right" (click)="deleteCategory(f.facility_id, 'facility')">
+                        <span class="material-icons text-danger">close</span>
+                    </button>
+                </label>
             </div>
         </div>
     </div>
