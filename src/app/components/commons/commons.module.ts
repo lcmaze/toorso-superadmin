@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { CityFilterComponent } from './city-filter/city-filter.component';
 import { VendorSearchComponent } from './vendor-search/vendor-search.component';
 import { CategorySelectComponent } from './category-select/category-select.component';
+import { CitySearchComponent } from './city-search/city-search.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CategorySelectComponent } from './category-select/category-select.compo
     LoginComponent,
     CityFilterComponent,
     VendorSearchComponent,
-    CategorySelectComponent
+    CategorySelectComponent,
+    CitySearchComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +45,8 @@ import { CategorySelectComponent } from './category-select/category-select.compo
     LoginComponent,
     CityFilterComponent,
     VendorSearchComponent,
-    CategorySelectComponent
+    CategorySelectComponent,
+    CitySearchComponent
   ]
 })
 export class CommonsModule { }

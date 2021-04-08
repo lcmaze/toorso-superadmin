@@ -27,6 +27,14 @@ export class InfoComponent implements OnInit {
     this.getVendor();
   }
 
+  selectedCity: any;
+  selectCity(city: any){
+    if(city){
+      // console.log(city);
+      this.selectedCity = city;
+    }
+  }
+
   // countries
   countries: any;
   getCountry(){
@@ -69,6 +77,11 @@ export class InfoComponent implements OnInit {
       await this.onMultipleSubmit().then(()=>{
         form.value['vendor_id'] = this.vendor.vendor_id;
         form.value['vendor_logo'] = this.vendor.vendor_logo;
+        if(this.selectedCity){
+          form.value['city_id'] = this.selectedCity.city_id;
+          form.value['state_id'] = this.selectedCity.states_info.state_id;
+          form.value['country_id'] = this.selectedCity.country_info.country_id;
+        }
         if(this.newsImageName) form.value['vendor_logo'] = this.newsImageName;
         this.mainData.post(form.value, `api/vendor/update-vendor`).subscribe(data =>{
           if(data){

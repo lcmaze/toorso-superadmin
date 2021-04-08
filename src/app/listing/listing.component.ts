@@ -33,6 +33,13 @@ export class ListingComponent implements OnInit {
     }
   }
   
+  formatDate(obj: any){
+    if(obj){
+      let date = new Date(obj);
+      return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`
+    }
+  }
+
   // selectMembership(vendor: any){
   //   this.router.navigateByUrl('/membership');
   // }

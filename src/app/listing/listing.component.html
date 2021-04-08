@@ -33,6 +33,9 @@
             <h6 class="mb-0">Location</h6>
         </div>
         <div class="status-cap border-right">
+            <h6 class="mb-0">Membership</h6>
+        </div>
+        <div class="status-cap border-right">
             <h6 class="mb-0">Status</h6>
         </div>
         <div class="expiry border-right">
@@ -51,15 +54,19 @@
             <h6 class="mb-0" *ngIf="!l.membership || (l.membership && !l.membership.category)">-</h6>
         </div>
         <div class="location">
-            <h6 class="mb-0">{{l.city_info.city_name}}, {{l.city_info.states_info.state_name}}</h6>
+            <h6 class="mb-0">{{l.city_info.city_name}}</h6>
         </div>
         <div class="status" [ngClass]="getBgStyle(l.membership)">
             <h6 class="mb-0" *ngIf="!l.membership">-</h6>
             <h6 class="mb-0 text-white" *ngIf="l.membership">{{l.membership.membership_type}}</h6>
         </div>
+        <div class="expiry border-right" [ngClass]="l.membership.is_active ? 'bg-success' : 'bg-danger'">
+            <h6 class="mb-0 text-white" *ngIf="!l.membership.is_active">Inactive</h6>
+            <h6 class="mb-0 text-white" *ngIf="l.membership.is_active">Active</h6>
+        </div>
         <div class="expiry border-right">
             <h6 class="mb-0" *ngIf="!l.membership">-</h6>
-            <h6 class="mb-0" *ngIf="l.membership">{{l.membership.contract_end_date}}</h6>
+            <h6 class="mb-0" *ngIf="l.membership">{{formatDate(l.membership.contract_end_date)}}</h6>
         </div>
         <div class="action2 px-4">
             <button mat-mini-fab color="accent" class="mr-2" (click)="editVendor(l)">

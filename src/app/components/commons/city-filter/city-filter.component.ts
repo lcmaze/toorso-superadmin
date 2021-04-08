@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MainService } from 'src/app/services/main.service';
 
 @Component({
@@ -9,6 +9,7 @@ import { MainService } from 'src/app/services/main.service';
 export class CityFilterComponent implements OnInit {
 
   @Output('city') city: any = new EventEmitter();
+  @Input('city-value') cityValue: any;
 
   constructor(private mainData: MainService) { }
 
