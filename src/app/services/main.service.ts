@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -10,7 +10,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class MainService {
 
-  constructor(private http: HttpClient, private _snackBar: MatSnackBar) { }
+  constructor(private http: HttpClient, private _snackBar: MatSnackBar) {
+    // this.selectedCountry.next(true);
+    // this.selectedState.next(true);
+  }
 
   uid: any;
   userDetails: any;
@@ -21,6 +24,10 @@ export class MainService {
   selectedMembership: any;
   vendorId: any;
   vendorDetails:any;
+
+  selectedCountry: any = new Subject<any>();
+  selectedState: any = new Subject<any>();
+  selectedDistrict: any = new Subject<any>();
 
   clientId: any;
 

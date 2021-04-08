@@ -12,11 +12,17 @@ import { environment } from 'src/environments/environment';
 export class InfoComponent implements OnInit {
 
   cdnUrl: string = environment.cdnLink;
+  selectedState: any;
 
   constructor(private mainData: MainService, private http: HttpClient) { }
 
   ngOnInit() {
-    this.getCountry();
+    // this.getCountry();
+    let state = this.mainData.selectedState.subscribe(data => {
+      this.selectedState = data;
+      console.log(this.selectedState)
+      this.getCities(this.selectedState.state_id);
+    });
     if(this.mainData.selectedMembership){
       this.selectVendor(this.mainData.selectedMembership);
     }
@@ -66,6 +72,7 @@ export class InfoComponent implements OnInit {
   // cities 
   cities: any;
   getCities(id: any){
+    console.log(id);
     this.mainData.getCache(`api/get-cities?id=${id}`).subscribe(data => {
       this.cities = data.rows;
     })
@@ -79,8 +86,6 @@ export class InfoComponent implements OnInit {
         form.value['vendor_logo'] = this.vendor.vendor_logo;
         if(this.selectedCity){
           form.value['city_id'] = this.selectedCity.city_id;
-          form.value['state_id'] = this.selectedCity.states_info.state_id;
-          form.value['country_id'] = this.selectedCity.country_info.country_id;
         }
         if(this.newsImageName) form.value['vendor_logo'] = this.newsImageName;
         this.mainData.post(form.value, `api/vendor/update-vendor`).subscribe(data =>{

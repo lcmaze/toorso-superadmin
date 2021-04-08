@@ -21,7 +21,7 @@ export class PromotionsComponent implements OnInit {
 
   promotions: any;
   getPromotion(){
-    this.mainData.get(`api/super/get-promotion?id=${this.mainData.vendorDetails.vendor_id}`).subscribe(data => {
+    this.mainData.get(`api/super/get-promotion?id=${this.mainData.vendorId}`).subscribe(data => {
       this.promotions = data['rows'][Object.keys(data['rows'])[0]];
       // console.log(this.promotions);
       if(!this.promotions) {

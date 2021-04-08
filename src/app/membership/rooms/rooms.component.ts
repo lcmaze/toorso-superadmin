@@ -113,7 +113,7 @@ export class RoomsComponent implements OnInit {
       obj['addons'] = this.product_addons;
       obj['vendor_id'] = this.mainData.vendorId;
       // console.log(obj);
-      this.mainData.post(obj, 'api/vendor/add-branch-product').subscribe(data => {
+      this.mainData.post(obj, 'api/super/add-branch-product').subscribe(data => {
         if(data){
           this.mainData.openToast('Updated Product!');
           if(data['id']) {
