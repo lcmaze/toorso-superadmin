@@ -3,7 +3,7 @@
     <p>Please select a vendor from <strong><a routerLink="/listing">Manage Listing</a></strong> or <strong><a routerLink="/pending">Pending Requests</a></strong></p>
 </div>
 
-<ng-container *ngIf="vendor">
+<ng-container *ngIf="vendor && membership">
     <div class="header">
         <small class="m-0">Selected Vendor</small>
         <h6><strong>{{vendor.vendor_name}}</strong></h6>
@@ -34,11 +34,11 @@
                                 </div>
                                 <div class="textur mb-3">
                                     <label>Approved Category</label>
-                                    <category-select (category)="category = $event.target.value" required></category-select>
+                                    <category-select (category)="category = $event.target.value" [value]="membership.category_id" required></category-select>
                                 </div>
-                                <div class="textur">
+                                <div class="textur" *ngIf="membership">
                                     <label>Membership Contract Period</label>
-                                    <app-date-range #dateRange (date)="membershipDate = $event" [date-input]="{start:membership.contract_start_date, end: membership.contract_end_date}"></app-date-range>
+                                    <app-date-range #dateRange [show-value]="true" (date)="membershipDate = $event" [date-input]="membershipContractPeriod"></app-date-range>
                                 </div>
                             </div>
                             <div class="col-md-6 p-3">

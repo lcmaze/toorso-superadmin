@@ -1,0 +1,153 @@
+.count-section {
+    box-shadow: 0px 2px 6px 0px #00000020;
+    border-radius: 6px;
+    background-color: #fff;
+    .router-link,
+    .router-link * {
+        cursor: pointer;
+        user-select: none;
+    }
+    .router-link:hover {
+        background-color: #f5f5f5;
+    }
+}
+
+label {
+    font-size: 16px;
+    font-family: 'Open Sans SB';
+    margin-bottom: 0;
+    .material-icons {
+        font-size: 21px;
+        vertical-align: text-top;
+    }
+}
+
+.sect {
+    overflow-x: auto;
+    box-shadow: 0 4px 8px 0 #00000030;
+    .tabl {
+        display: flex;
+        width: 100%;
+        color: #3d3d3d;
+        .nam {
+            min-width: 240px;
+            // max-width: 240px;
+            height: 50px;
+            flex-grow: 1;
+            display: flex;
+            // justify-content: center;
+            padding-left: 16px;
+            align-items: center;
+            text-align: center;
+            font-family: 'Open Sans SB';
+            background-color: #fff;
+            border-bottom: 1px solid #dee2e6;
+            h6 {
+                font-size: 13px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+        .typ {
+            min-width: 140px;
+            max-width: 140px;
+            height: 50px;
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: 'Open Sans SB';
+            background-color: #fff;
+            border-bottom: 1px solid #dee2e6;
+            h6 {
+                font-size: 13px;
+            }
+        }
+        .status-cap {
+            min-width: 120px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: 'Open Sans SB';
+            background-color: #fff;
+            border-bottom: 1px solid #dee2e6;
+            h6 {
+                font-size: 13px;
+            }
+        }
+        .location {
+            min-width: 200px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: 'Open Sans SB';
+            background-color: #fff;
+            border-bottom: 1px solid #dee2e6;
+            h6 {
+                font-size: 13px;
+            }
+        }
+        .status {
+            min-width: 120px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: 'Open Sans SB';
+            background-color: #fff;
+            border-bottom: 1px solid #dee2e6;
+            h6 {
+                font-size: 13px;
+            }
+        }
+        .expiry {
+            width: 120px;
+            min-width: 120px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: 'Open Sans SB';
+            background-color: #fff;
+            border-bottom: 1px solid #dee2e6;
+            h6 {
+                font-size: 13px;
+            }
+        }
+        .action {
+            min-width: 144px;
+            max-width: 144px;
+            width: 144px;
+            height: 50px;
+            display: flex;
+            flex-grow: 1;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: 'Open Sans SB';
+            background-color: #fff;
+            border-bottom: 1px solid #dee2e6;
+            h6 {
+                font-size: 13px;
+            }
+        }
+        .action2 {
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: 'Open Sans SB';
+            background-color: #fff;
+            border-bottom: 1px solid #dee2e6;
+        }
+    }
+}

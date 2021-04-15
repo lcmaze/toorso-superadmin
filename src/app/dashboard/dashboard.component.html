@@ -1,7 +1,7 @@
 <section>
     <div class="row mt-4" *ngIf="details">
         <div class="col-md-4">
-            <div class="box text-danger p-3 mt-4">
+            <div class="box text-danger p-3 mt-4" routerLink="/listing">
                 <div>
                     <div class="filterfont icn">a</div>
                     <div class="name">Approved Vendors</div>
@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="box text-danger p-3 mt-4">
+            <div class="box text-danger p-3 mt-4" routerLink="/pending">
                 <div>
                     <div class="filterfont icn">a</div>
                     <div class="name">Pending Vendors</div>
@@ -31,7 +31,22 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="box text-danger p-3 mt-4">
+            <div class="box text-danger p-3 mt-4" routerLink="/deactivated">
+                <div>
+                    <div class="filterfont icn">a</div>
+                    <div class="name">Deactivated Vendors</div>
+                </div>
+                <div class="count d-flex align-items-center justify-content-end">
+                    <div class="vendor">
+                        <div class="nos">{{details.deactivated}}</div>
+                        <div class="cap">Vendors</div>
+                    </div>
+                </div>
+                <!-- <div class="notify">10</div> -->
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box text-danger p-3 mt-4" routerLink="/inactive">
                 <div>
                     <div class="filterfont icn">a</div>
                     <div class="name">Inactive Vendors</div>

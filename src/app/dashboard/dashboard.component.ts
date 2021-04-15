@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
   getCounts(){
     this.mainData.get(`api/super/get-counts`).subscribe(data => {
       this.details = data;
+      console.log(this.details)
     })
   }
 

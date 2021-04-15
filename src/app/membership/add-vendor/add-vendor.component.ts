@@ -19,7 +19,7 @@ export class AddVendorComponent implements OnInit {
 
   submitDetails(form: NgForm){
     if(form.valid){
-      form.value['city_id'] = this.city.city_id;
+      // form.value['city_id'] = this.city.city_id;
       // console.log(form.value);
       this.mainData.post(form.value, `api/vendor/register-vendor`).subscribe(data => {
         if(data === true){

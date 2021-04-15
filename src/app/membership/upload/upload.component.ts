@@ -99,6 +99,7 @@ export class UploadComponent implements OnInit {
             if(data) {
               this.mainData.openToast('Updated Successfully!');
               this.previewImages = [];
+              this.imageToUpload = [];
               this.getImages();
             }
             else{

@@ -7,6 +7,8 @@ const routes: Routes = [
   { path: 'membership', loadChildren: () => import('./membership/membership.module').then(m => m.MembershipModule) },
   { path: 'pending', loadChildren: () => import('./pending/pending.module').then(m => m.PendingModule) },
   { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
+  { path: 'inactive', loadChildren: () => import('./inactive/inactive.module').then(m => m.InactiveModule) },
+  { path: 'deactivated', loadChildren: () => import('./deactivated/deactivated.module').then(m => m.DeactivatedModule) },
 ];
 
 @NgModule({

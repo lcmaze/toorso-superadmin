@@ -5,4 +5,5 @@
         <input matEndDate placeholder="To" style="cursor: pointer;" formControlName="end" (dateChange)="selectedDate()">
     </mat-date-range-input>
 </div>
+<p *ngIf="showExtraValue && dateInput && (dateInput.start && dateInput.end)" style="margin-top: 5px;">Selected Date: <strong>{{formatDate(dateInput.start)}} to {{formatDate(dateInput.end)}}</strong></p>
 <mat-date-range-picker #picker ></mat-date-range-picker>

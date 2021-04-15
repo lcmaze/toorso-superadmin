@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MainService } from 'src/app/services/main.service';
 
 @Component({
@@ -11,6 +11,7 @@ export class CategorySelectComponent implements OnInit {
   constructor(private mainData: MainService) { }
 
   @Output('category') cat: any = new EventEmitter();
+  @Input('value') categoryValue: any;
 
   ngOnInit(): void {
     this.getDetails();

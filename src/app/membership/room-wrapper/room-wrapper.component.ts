@@ -40,7 +40,7 @@ export class RoomWrapperComponent implements OnInit {
   showMainBox: boolean = false;
   getProducts(){
     this.products = [];
-    this.mainData.get(`api/vendor/get-products?branch_id=${this.selectedBranch}&vendor_id=${this.mainData.vendorId}`).subscribe(data => {
+    this.mainData.get(`api/super/get-products?branch_id=${this.selectedBranch}&vendor_id=${this.mainData.vendorId}`).subscribe(data => {
       this.products = data['rows'];
       this.showMainBox = true;
     })

@@ -15,6 +15,7 @@ export class MembershipComponent implements OnInit {
   @ViewChild('dateRange') dateRange: DateRangeComponent;
 
   vendor: any;
+  membershipContractPeriod: any = {};
 
   ngOnInit(): void {
     // console.log(this.mainData.vendorDetails);
@@ -40,7 +41,8 @@ export class MembershipComponent implements OnInit {
         if(data && data['sub_categories']) this.sub_categories = data['sub_categories'].split(',');
         this.membershipDate = {start:data['contract_start_date'], end: data['contract_end_date']};
         this.category = data['category_id'];
-        // this.mainData.vendorDetails = data;
+        this.membershipContractPeriod['start'] = this.membership.contract_start_date;
+        this.membershipContractPeriod['end'] = this.membership.contract_end_date;
       }
       else{
         this.membership = {};
