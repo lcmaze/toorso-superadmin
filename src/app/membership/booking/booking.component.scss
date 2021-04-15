@@ -1,0 +1,118 @@
+label {
+    color: #7e7e7e;
+    font-size: 14px;
+    font-family: 'Open Sans SB';
+    .material-icons {
+        font-size: 21px;
+        vertical-align: text-top;
+    }
+}
+
+.blocks {
+    // box-shadow: 0 4px 4px 0 #00000020;
+    // background-color: #fff;
+    h6 {
+        font-size: 14px;
+        font-family: 'Open Sans SB';
+        color: #3d3d3d;
+        span {
+            color: #7e7e7e;
+        }
+    }
+    .blockall {
+        max-width: 310px;
+    }
+}
+
+.sect {
+    overflow-x: auto;
+    box-shadow: 0 4px 8px 0 #00000030;
+    .tabl {
+        display: flex;
+        border-bottom: 1px solid #eaeaea;
+        .head {
+            height: 60px;
+            background-color: #0274b9;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: 'Open Sans B';
+            border-right: 1px solid #eaeaea;
+            h6 {
+                font-size: 12px;
+            }
+        }
+        .roo {
+            min-width: 65px;
+            height: 50px;
+            background-color: #0274b9;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: 'Open Sans SB';
+            h6 {
+                font-size: 13px;
+                span {
+                    color: #eaeaea;
+                    font-size: 10px;
+                }
+            }
+        }
+        .typ {
+            min-width: 200px;
+            height: 50px;
+            background-color: #fff;
+            color: #3d3d3d;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: 'Open Sans SB';
+            h6 {
+                font-size: 13px;
+            }
+        }
+        .stat {
+            display: flex;
+            align-items: center;
+            min-width: 310px;
+            max-width: 310px;
+            background-color: #eaeaea;
+            border-top: 1px solid #fff;
+        }
+        .availablit {
+            min-width: 200px;
+            flex-grow: 1;
+            height: 50px;
+            background-color: #fff;
+            color: #3d3d3d;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: 'Open Sans SB';
+            border-right: 1px solid #eaeaea;
+            h6 {
+                font-size: 13px;
+            }
+        }
+        .gues {
+            min-width: 200px;
+            height: 50px;
+            background-color: #fff;
+            color: #3d3d3d;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: 'Open Sans SB';
+            h6 {
+                font-size: 13px;
+            }
+        }
+    }
+}
