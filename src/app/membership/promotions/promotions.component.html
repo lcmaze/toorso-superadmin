@@ -1,0 +1,151 @@
+<div class="row mt-3 mx-2">
+    <div class="col-md-6 mb-3">
+        <div class="box">
+            <div class="head px-3 py-2">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h6 class="mb-0">Paid Promotion Category</h6>
+                    <select class="form-control" style="width:100px">
+                    <option selected value="true">Active</option>
+                    <option value="false">In Active</option>
+                </select>
+                </div>
+            </div>
+            <form #promotionForm="ngForm" *ngIf="promotions">
+                <div class="box">
+                    <div class="cnt px-3 pb-3">
+                        <div class="row">
+                            <div class="col-md-7 p-2">
+                                <div class="textur">
+                                    <label>Paid Promotion Period</label>
+                                    <app-date-range #dateRange (date)="promotionDate = $event" [date-input]="promotionDate"></app-date-range>
+                                </div>
+                            </div>
+                            <div class="col-md-5 p-2">
+                                <div class="textur">
+                                    <label>Membership Amount</label>
+                                    <input type="text" class="form-control" value="3000" [(ngModel)]="promotions.contract_amount" name="contract_amount" required>
+                                </div>
+                            </div>
+                            <div class="col-6 mt-2">
+                                <div>
+                                    <label>Promotion Text</label>
+                                    <input type="text" class="form-control" name="promotion_text" [(ngModel)]="promotions.promotion_text" required>
+                                </div>
+                                <div class="mt-2">
+                                    <label>Select Room</label>
+                                    <select class="form-control" name="product_id" [(ngModel)]="promotions.product_id" required>
+                                       <option disabled selected value="0">Choose Any Room Type</option>
+                                       <option [value]="p.product_id" *ngFor="let p of products">{{p.room_type}} - {{p.vendor_name}}</option>
+                                   </select>
+                                </div>
+                                <div class="mt-2">
+                                    <label>Discount %</label>
+                                    <input type="text" class="form-control" name="discount" [(ngModel)]="promotions.discount" required>
+                                </div>
+                                <div class="mt-2">
+                                    <label>Choose Date</label>
+                                    <!-- <app-date-range></app-date-range> -->
+                                    <div class="form-control" (click)="picker_one.open()">
+                                        <mat-date-range-input [rangePicker]="picker_one">
+                                            <input matStartDate readonly name="start_date" [(ngModel)]="promotions.start_date" style="cursor: pointer;" required>
+                                            <input matEndDate name="end_date" [(ngModel)]="promotions.end_date" readonly style="cursor: pointer;" required>
+                                        </mat-date-range-input>
+                                    </div>
+                                    <mat-date-range-picker #picker_one></mat-date-range-picker>
+                                </div>
+                            </div>
+                            <div class="col-6 mt-2">
+                                <label>Banner Color</label><br>
+    
+                                <mat-radio-group aria-label="Select an option" name="banner_color" color="primary" class="mb-4" 
+                                required [(ngModel)]="promotions.banner_color">
+                                    <mat-radio-button value="#c62828">Red&nbsp;</mat-radio-button>
+                                    <mat-radio-button value="#ffeb3b">Yellow</mat-radio-button>
+                                </mat-radio-group>
+    
+                                <!-- <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="radio1" name="radio-stacked" 
+                                    required [(ngModel)]="promotions.banner_color">
+                                    <label class="custom-control-label" for="radio1">Red</label>
+                                </div>
+                                <div class="custom-control custom-radio mb-3">
+                                    <input type="radio" class="custom-control-input" id="radio2" name="radio-stacked" 
+                                    required [(ngModel)]="promotions.banner_color">
+                                    <label class="custom-control-label" for="radio2">Yellow</label>
+                                </div> -->
+                                <div class="prof-pic mt-3">
+                                    <img class="w-100" [src]="cdnUrl + 'promotions/' + promotions.image" *ngIf="!logoPreview">
+                                    <div class="logo-wrapper" *ngIf="logoPreview">
+                                        <button class="btn btn-danger btn-sm d-flex align-center" (click)="resetImage()"><mat-icon>delete</mat-icon>Remove</button>
+                                        <img [src]="logoPreview" class="w-100 logo-img mt-3">
+                                    </div>
+                                    <!-- <button mat-raised-button class="w-100 mt-2">Change Image</button> -->
+                                    <div class="custom-file mt-3">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" (change)="selectMultipleImage($event)" #logo>
+                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100">
+                                <button class="btn btn-success float-right m-3" (click)="submitDetails(promotionForm)">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- <div class="col-md-6 mb-3">
+        <div class="box">
+            <div class="head px-3 py-2">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h6 class="mb-0">Sponsored Ads - Places Category</h6>
+                    <select class="form-control" style="width:100px">
+                    <option selected>Active</option>
+                </select>
+                </div>
+            </div>
+            <div class="body px-3">
+                <div class="row p-2">
+                    <div class="col-md-7 p-2">
+                        <div class="textur">
+                            <label>Advertisement Period</label>
+                            <app-date-range></app-date-range>
+                        </div>
+                    </div>
+                    <div class="col-md-5 p-2">
+                        <div class="textur">
+                            <label>Amount</label>
+                            <input type="text" class="form-control" value="3000">
+                        </div>
+                    </div>
+                    <div class="col-12 p-2">
+                        <div class="textur">
+                            <label>Ads Link</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-7 p-2">
+                        <label>Logo Appear on Home Page</label>
+                        <select name="" id="" class="form-control">
+                            <option value="1" selected>Yes</option>
+                        </select>
+                    </div>
+                    <div class="col-md-7 p-2">
+                        <label>Choose Places</label>
+                        <select name="" id="" class="form-control">
+                            <option value="1" selected>Athirapilly Waterfalls</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 p-2">
+                        <img class="w-100" src="assets/images/offer.jpeg" alt="">
+                    </div>
+                    <div class="col-md-6 p-2">
+                        <button class="btn btn-danger mt-2 mr-2">Remove</button>
+                        <button class="btn btn-success mt-2">Upload</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</div>

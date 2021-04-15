@@ -1,77 +1,102 @@
-<div class="row mx-0">
-    <div class="col-md-6 px-0">
-        <div class="box">
-            <div class="head">Facilities</div>
-            <div class="cnt px-2">
-                <div class="row mx-0 align-items-center" style="border-bottom: 1px solid #eaeaea;">
-                    <div class="col-6 p-2">
-                        <div class="custom-control custom-checkbox mr-sm-2">
-                            <input type="checkbox" class="custom-control-input" id="one">
-                            <label class="custom-control-label" for="one"><span class="filterfont mr-sm-1">c</span> name</label>
-                        </div>
-                    </div>
-                    <div class="col-3 p-2">
-                        <select class="custom-select">
-                            <option value="free">Free</option>
-                            <option value="paid">Paid</option>
-                            <option value="on_request">On Request</option>
-                        </select>
-                    </div>
-                    <div class="col-3 p-2">
-                        <input type="text" class="form-control" placeholder="Price">
-                    </div>
-                </div>
-            </div>
+<div style="height: 15px;"></div>
+<!-- <vendor-search (vendor)="selectVendor($event)"></vendor-search> -->
+<ng-container *ngIf="vendor">
+    <div class="row">
+        <div class="col-md-6 p-2 px-md-3">
+            <label>Choose Product</label>
+            <select class="custom-select" id="inputGroupSelect02" [(ngModel)]="selectedBranch" (change)="changeBranch(selectedBranch)">
+            <option [value]="b.branch_id" *ngFor="let b of branches">{{b.vendor_name}}</option>
+          </select>
         </div>
     </div>
-    <div class="col-md-6 px-0">
-        <div class="box mb-4">
-            <div class="head">Food Arrangements</div>
-            <div class="cnt px-2">
 
-                <div class="row mx-0 align-items-center" style="border-bottom: 1px solid #eaeaea;">
-                    <div class="col-6 p-2">
-                        <div class="custom-control custom-checkbox mr-sm-2">
-                            <input type="checkbox" class="custom-control-input" id="two">
-                            <label class="custom-control-label" for="two"><span class="filterfont mr-sm-1">E</span> name</label>
+    <div class="row">
+        <div class="col-md-6 p-2 px-md-3">
+            <form #facilityForm="ngForm">
+                <div class="box">
+                    <div class="head">Facilities</div>
+                    <div class="cnt px-2">
+
+                        <div class="row mx-0 align-items-center" style="border-bottom: 1px solid #eaeaea;" *ngFor="let f of facilities;let i = index">
+                            <div class="col-6 p-2">
+                                <div class="custom-control custom-checkbox mr-sm-2">
+                                    <input type="checkbox" class="custom-control-input" [id]="'check' + i" [name]="'facility_check' + i" [(ngModel)]="f.checked">
+                                    <label class="custom-control-label" [for]="'check' + i"><span class="filterfont mr-sm-1">{{f.icon}}</span> {{f.facility_name}}</label>
+                                </div>
+                            </div>
+                            <div class="col-3 p-2">
+                                <select class="custom-select" [name]="'facility' + i" [(ngModel)]="f.branch_facility.facility_type">
+                                    <option value="free">Free</option>
+                                    <option value="paid">Paid</option>
+                                    <option value="on_request">On Request</option>
+                                </select>
+                            </div>
+                            <div class="col-3 p-2">
+                                <input type="text" *ngIf="f.branch_facility.facility_type === 'paid'" class="form-control" placeholder="Price" [name]="'price' + i" [(ngModel)]="f.branch_facility.facility_price">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-3 p-2">
-                        <select class="custom-select">
-                                <option value="free">Free</option>
-                                <option value="paid">Paid</option>
-                                <option value="on_request">On Request</option>
-                            </select>
-                    </div>
-                    <div class="col-3 p-2">
-                        <input type="text" class="form-control" placeholder="Price">
+                        <button class="m-3 btn btn-success float-right" (click)="submitFacilities(facilityForm)" [disabled]="facilityForm.invalid">Save</button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
-        <div class="box mb-4">
-            <div class="head">Transportation Facilities</div>
-            <div class="cnt px-2">
+        <div class="col-md-6 p-2 px-md-3">
+            <form #foodForm="ngForm">
+                <div class="box mb-4">
+                    <div class="head">Food Arrangements</div>
+                    <div class="cnt px-2">
 
-                <div class="row mx-0 align-items-center" style="border-bottom: 1px solid #eaeaea;">
-                    <div class="col-6 p-2">
-                        <div class="custom-control custom-checkbox mr-sm-2">
-                            <input type="checkbox" class="custom-control-input" id="three">
-                            <label class="custom-control-label" for="three"><span class="filterfont mr-sm-1">V</span>name</label>
+                        <div class="row mx-0 align-items-center" style="border-bottom: 1px solid #eaeaea;" *ngFor="let f of foods;let i = index">
+                            <div class="col-6 p-2">
+                                <div class="custom-control custom-checkbox mr-sm-2">
+                                    <input type="checkbox" class="custom-control-input" [id]="'fcheck' + i" [name]="'food_check' + i" [(ngModel)]="f.checked">
+                                    <label class="custom-control-label" [for]="'fcheck' + i"><span class="filterfont mr-sm-1">{{f.icon}}</span> {{f.food_name}}</label>
+                                </div>
+                            </div>
+                            <div class="col-3 p-2">
+                                <select class="custom-select" [name]="'food' + i" [(ngModel)]="f.branch_food.food_type">
+                                    <option value="free">Free</option>
+                                    <option value="paid">Paid</option>
+                                    <option value="on_request">On Request</option>
+                                </select>
+                            </div>
+                            <div class="col-3 p-2">
+                                <input type="text" *ngIf="f.branch_food.food_type === 'paid'" class="form-control" placeholder="Price" [name]="'price' + i" [(ngModel)]="f.branch_food.food_price">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-3 p-2">
-                        <select class="custom-select">
-                            <option value="free">Free</option>
-                            <option value="paid">Paid</option>
-                            <option value="on_request">On Request</option>
-                        </select>
-                    </div>
-                    <div class="col-3 p-2">
-                        <input type="text" class="form-control" placeholder="Price">
+                        <button class="m-3 btn btn-success float-right" (click)="submitFood(foodForm)" [disabled]="foodForm.invalid">Save</button>
+
                     </div>
                 </div>
-            </div>
+            </form>
+            <form #transForm="ngForm">
+                <div class="box mb-4">
+                    <div class="head">Transportation Facilities</div>
+                    <div class="cnt px-2">
+
+                        <div class="row mx-0 align-items-center" style="border-bottom: 1px solid #eaeaea;" *ngFor="let f of transportations;let i = index">
+                            <div class="col-6 p-2">
+                                <div class="custom-control custom-checkbox mr-sm-2">
+                                    <input type="checkbox" class="custom-control-input" [id]="'tcheck' + i" [name]="'transportation_check' + i" [(ngModel)]="f.checked">
+                                    <label class="custom-control-label" [for]="'tcheck' + i"><span class="filterfont mr-sm-1">{{f.icon}}</span> {{f.transportation_name}}</label>
+                                </div>
+                            </div>
+                            <div class="col-3 p-2">
+                                <select class="custom-select" [name]="'transportation' + i" [(ngModel)]="f.branch_transportation.transportation_type">
+                                    <option value="free">Free</option>
+                                    <option value="paid">Paid</option>
+                                    <option value="on_request">On Request</option>
+                                </select>
+                            </div>
+                            <div class="col-3 p-2">
+                                <input type="text" *ngIf="f.branch_transportation.transportation_type === 'paid'" class="form-control" placeholder="Price" [name]="'price' + i" [(ngModel)]="f.branch_transportation.transportation_price">
+                            </div>
+                        </div>
+                        <button class="m-3 btn btn-success float-right" (click)="submitTransportation(transForm)" [disabled]="transForm.invalid">Save</button>
+
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-</div>
+</ng-container>

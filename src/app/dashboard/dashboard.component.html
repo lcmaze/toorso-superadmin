@@ -1,33 +1,57 @@
 <section>
-    <div class="row mt-4">
+    <div class="row mt-4" *ngIf="details">
         <div class="col-md-4">
-            <div class="box text-danger p-3">
+            <div class="box text-danger p-3 mt-4">
                 <div>
                     <div class="filterfont icn">a</div>
-                    <div class="name">Hotels & Resorts</div>
+                    <div class="name">Approved Vendors</div>
                 </div>
                 <div class="count d-flex align-items-center justify-content-end">
                     <div class="vendor">
-                        <div class="nos">160</div>
+                        <div class="nos">{{details.vendors}}</div>
                         <div class="cap">Vendors</div>
                     </div>
                 </div>
-                <div class="notify">10</div>
+                <!-- <div class="notify">10</div> -->
             </div>
         </div>
         <div class="col-md-4">
-            <div class="box text-info p-3">
+            <div class="box text-danger p-3 mt-4">
                 <div>
-                    <div class="filterfont icn">b</div>
-                    <div class="name">Places</div>
+                    <div class="filterfont icn">a</div>
+                    <div class="name">Pending Vendors</div>
                 </div>
                 <div class="count d-flex align-items-center justify-content-end">
                     <div class="vendor">
-                        <div class="nos">160</div>
+                        <div class="nos">{{details.pending}}</div>
                         <div class="cap">Vendors</div>
                     </div>
                 </div>
-                <div class="notify">10</div>
+                <!-- <div class="notify">10</div> -->
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box text-danger p-3 mt-4">
+                <div>
+                    <div class="filterfont icn">a</div>
+                    <div class="name">Inactive Vendors</div>
+                </div>
+                <div class="count d-flex align-items-center justify-content-end">
+                    <div class="vendor">
+                        <div class="nos">{{details.inactive}}</div>
+                        <div class="cap">Vendors</div>
+                    </div>
+                </div>
+                <!-- <div class="notify">10</div> -->
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box text-info p-3 mt-4" routerLink="/membership/add-vendor">
+                <div>
+                    <div class="filterfont icn">K</div>
+                    <div class="name">Add Vendor</div>
+                </div>
+                <div class="count d-flex align-items-center justify-content-end"></div>
             </div>
         </div>
     </div>

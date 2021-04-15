@@ -1,370 +1,118 @@
-<mat-tab-group>
-    <mat-tab label="Membership">
-        <div class="box my-3 mx-2">
-            <div class="head p-3">
-                <h6 class="mb-0">Manage Membership Category</h6>
-            </div>
-            <div class="body px-3">
-                <div class="row">
-                    <div class="col-md-6 p-3">
-                        <div class="searchbox mb-3">
-                            <label>Choose Client</label>
-                            <input type="text" class="form-control" placeholder="Search Here">
-                            <div class="suggestion d-none">
-                                <li>Kanmadam Resort</li>
-                                <li>Kanmadam Resort</li>
-                                <li>Kanmadam Resort</li>
-                                <li>Kanmadam Resort</li>
-                                <li>Kanmadam Resort</li>
-                                <li>Kanmadam Resort</li>
-                            </div>
-                        </div>
-                        <div class="textur mb-3">
-                            <label>Database Status</label>
-                            <select class="form-control">
-                                <option selected>Active</option>
-                                <option>Deactive</option>
-                            </select>
-                        </div>
-                        <div class="textur mb-3">
-                            <label>Approved Category</label>
-                            <select class="form-control">
-                                <option selected>Hotels, Resorts & Homestays</option>
-                            </select>
-                        </div>
-                        <div class="textur">
-                            <label>Membership Contract Period</label>
-                            <app-date-range></app-date-range>
-                        </div>
+<div class="membership" *ngIf="!vendor">
+    <h3><strong>Membership</strong></h3>
+    <p>Please select a vendor from <strong><a routerLink="/listing">Manage Listing</a></strong> or <strong><a routerLink="/pending">Pending Requests</a></strong></p>
+</div>
+
+<ng-container *ngIf="vendor">
+    <div class="header">
+        <small class="m-0">Selected Vendor</small>
+        <h6><strong>{{vendor.vendor_name}}</strong></h6>
+    </div>
+    <mat-tab-group>
+        <mat-tab label="Membership">
+            <form #memberShip="ngForm" (ngSubmit)="membershipDetails(memberShip)">
+                <div class="box my-3 mx-2">
+                    <div class="head p-3">
+                        <h6 class="mb-0">Manage Membership Category</h6>
                     </div>
-                    <div class="col-md-6 p-3">
-                        <div class="textur mb-3">
-                            <label>Membership Approval</label>
-                            <select class="form-control">
-                                <option selected>Approved</option>
-                                <option>Deactivated</option>
-                            </select>
-                        </div>
-                        <div class="textur mb-3">
-                            <label>Toorso Verified Status</label>
-                            <select class="form-control">
-                                <option selected>Verified</option>
-                            </select>
-                        </div>
+                    <div class="body px-3">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-6 p-3">
+                                <!-- <div class="searchbox mb-3">
+                                    <label>Choose Client</label>
+                                    <div class="d-flex">
+                                        <vendor-search (vendor)="selectVendor($event)" class="mr-3 flex-grow-1"></vendor-search>
+                                        <button class="btn btn-dark" style="white-space: nowrap;" routerLink="/membership/add-vendor">Add New</button>
+                                    </div>
+                                </div> -->
                                 <div class="textur mb-3">
-                                    <label>Membership Category</label>
-                                    <select class="form-control">
-                                        <option selected>Premium</option>
+                                    <label>Database Status</label>
+                                    <select class="form-control" name="is_active" [ngModel]="membership.is_active">
+                                        <option [value]="true">Active</option>
+                                        <option [value]="false">Inactive</option>
                                     </select>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
                                 <div class="textur mb-3">
-                                    <label>Membership Amount</label>
-                                    <input type="text" class="form-control" value="3000">
+                                    <label>Approved Category</label>
+                                    <category-select (category)="category = $event.target.value" required></category-select>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="textur mb-3">
-                            <label>Approved Subcategories</label>
-                            <div class="d-flex mb-2">
-                                <input type="text" class="form-control mr-2" placeholder="" name="vendor_keywords">
-                                <button class="btn btn-dark">Add</button>
-                            </div>
-                            <mat-chip-list>
-                                <mat-chip>name
-                                    <mat-icon matChipRemove>cancel</mat-icon>
-                                </mat-chip>
-                                <mat-chip>name
-                                    <mat-icon matChipRemove>cancel</mat-icon>
-                                </mat-chip>
-                            </mat-chip-list>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </mat-tab>
-    <mat-tab label="Promotion & Ads">
-        <div class="row mt-3 mx-2">
-            <div class="col-md-6 mb-3">
-                <div class="box">
-                    <div class="head px-3 py-2">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <h6 class="mb-0">Paid Promotion Category</h6>
-                            <select class="form-control" style="width:100px">
-                            <option selected>Active</option>
-                        </select>
-                        </div>
-                    </div>
-                    <div class="body px-3">
-                        <div class="row p-2">
-                            <div class="col-md-7 p-2">
                                 <div class="textur">
-                                    <label>Paid Promotion Period</label>
-                                    <app-date-range></app-date-range>
+                                    <label>Membership Contract Period</label>
+                                    <app-date-range #dateRange (date)="membershipDate = $event" [date-input]="{start:membership.contract_start_date, end: membership.contract_end_date}"></app-date-range>
                                 </div>
                             </div>
-                            <div class="col-md-5 p-2">
-                                <div class="textur">
-                                    <label>Membership Amount</label>
-                                    <input type="text" class="form-control" value="3000">
+                            <div class="col-md-6 p-3">
+                                <div class="textur mb-3">
+                                    <label>Membership Approval</label>
+                                    <select class="form-control" name="is_approved" [ngModel]="membership.is_approved">
+                                        <option [value]="true">Approved</option>
+                                        <option [value]="false">Deactivated</option>
+                                    </select>
                                 </div>
-                            </div>
-                            <div class="col-12 p-2">
-                                <div class="textur">
-                                    <label>Banner Text</label>
-                                    <input type="text" class="form-control">
+                                <div class="textur mb-3">
+                                    <label>Toorso Verified Status</label>
+                                    <select class="form-control" name="is_verified" [ngModel]="membership.is_verified">
+                                        <option [value]="false">Not Verified</option>
+                                        <option [value]="true">Verified</option>
+                                    </select>
                                 </div>
-                            </div>
-                            <div class="col-md-7 p-2">
-                                <label>Room Type</label>
-                                <select name="" id="" class="form-control">
-                                    <option value="1" selected>Deluxe Room</option>
-                                </select>
-                            </div>
-                            <div class="col-md-5 p-2">
-                                <label>Discount %</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="col-md-7 p-2">
-                                <label>Offer Duration</label>
-                                <app-date-range></app-date-range>
-                            </div>
-                            <div class="col-md-5 p-2">
-                                <label>Badge</label>
-                                <div class="w-100 mt-2">
-                                    <mat-radio-group aria-label="Select an option" name="banner_color" color="primary" class="mb-4" required>
-                                        <mat-radio-button value="#c62828">Red&nbsp;</mat-radio-button>
-                                        <mat-radio-button value="#ffeb3b">Yellow</mat-radio-button>
-                                    </mat-radio-group>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="textur mb-3">
+                                            <label>Membership Category</label>
+                                            <select class="form-control" name="membership_type" [ngModel]="membership.membership_type">
+                                                <option value="free">Free</option>
+                                                <option value="premium">Premium</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="textur mb-3">
+                                            <label>Membership Amount</label>
+                                            <input type="text" class="form-control" name="membership_amount" [ngModel]="membership.membership_amount">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6 p-2">
-                                <img class="w-100" src="assets/images/offer.jpeg" alt="">
-                            </div>
-                            <div class="col-md-6 p-2">
-                                <button class="btn btn-danger mt-2 mr-2">Remove</button>
-                                <button class="btn btn-success mt-2">Upload</button>
+                                <div class="textur mb-3">
+                                    <label>Approved Subcategories</label>
+                                    <div class="d-flex mb-2">
+                                        <input type="text" class="form-control mr-2" name="sub_cat" [(ngModel)]="subCategories">
+                                        <button class="btn btn-dark" type="button" (click)="sub_categories.push(subCategories);subCategories = ''">Add</button>
+                                    </div>
+                                    <mat-chip-list>
+                                        <mat-chip *ngFor="let c of sub_categories;let i = index">{{c}}
+                                            <mat-icon matChipRemove (click)="sub_categories.splice(i, 1)">cancel</mat-icon>
+                                        </mat-chip>
+                                    </mat-chip-list>
+                                </div>
+                                <button class="btn btn-success mt-3 float-right" type="submit">Save</button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6 mb-3">
-                <div class="box">
-                    <div class="head px-3 py-2">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <h6 class="mb-0">Sponsored Ads - Places Category</h6>
-                            <select class="form-control" style="width:100px">
-                            <option selected>Active</option>
-                        </select>
-                        </div>
-                    </div>
-                    <div class="body px-3">
-                        <div class="row p-2">
-                            <div class="col-md-7 p-2">
-                                <div class="textur">
-                                    <label>Advertisement Period</label>
-                                    <app-date-range></app-date-range>
-                                </div>
-                            </div>
-                            <div class="col-md-5 p-2">
-                                <div class="textur">
-                                    <label>Amount</label>
-                                    <input type="text" class="form-control" value="3000">
-                                </div>
-                            </div>
-                            <div class="col-12 p-2">
-                                <div class="textur">
-                                    <label>Ads Link</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-7 p-2">
-                                <label>Logo Appear on Home Page</label>
-                                <select name="" id="" class="form-control">
-                                    <option value="1" selected>Yes</option>
-                                </select>
-                            </div>
-                            <div class="col-md-7 p-2">
-                                <label>Choose Places</label>
-                                <select name="" id="" class="form-control">
-                                    <option value="1" selected>Athirapilly Waterfalls</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6 p-2">
-                                <img class="w-100" src="assets/images/offer.jpeg" alt="">
-                            </div>
-                            <div class="col-md-6 p-2">
-                                <button class="btn btn-danger mt-2 mr-2">Remove</button>
-                                <button class="btn btn-success mt-2">Upload</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </mat-tab>
-    <mat-tab label="Info">
-        <div class="box my-3 mx-2">
-            <div class="head p-3">
-                <h6 class="mb-0">Info</h6>
-            </div>
-            <div class="body p-3">
-                <app-info></app-info>
-            </div>
-        </div>
-    </mat-tab>
-    <mat-tab label="Rooms">
-        <div class="mt-3 mx-2">
-            <div class="box mb-3">
+            </form>
+        </mat-tab>
+        <mat-tab label="Promotion & Ads">
+            <promotions></promotions>
+        </mat-tab>
+        <mat-tab label="Info">
+            <div class="box my-3 mx-2">
                 <div class="head p-3">
-                    <h6 class="mb-0">Rooms</h6>
+                    <h6 class="mb-0">Info</h6>
                 </div>
-                <div class="body">
-                    <app-rooms></app-rooms>
-                </div>
-            </div>
-            <div class="box mb-3">
-                <div class="head p-3">
-                    <h6 class="mb-0">Rooms</h6>
-                </div>
-                <div class="body">
-                    <app-rooms></app-rooms>
+                <div class="body p-3">
+                    <app-info></app-info>
                 </div>
             </div>
-        </div>
-    </mat-tab>
-    <mat-tab label="Features">
-        <div class="box my-3 mx-2">
-            <div class="head p-3">
-                <h6 class="mb-0">All Features</h6>
-            </div>
-            <div class="body">
-                <app-features></app-features>
-            </div>
-        </div>
-    </mat-tab>
-    <mat-tab label="Upload">
-        <div class="box my-3 mx-2">
-            <div class="head p-3">
-                <h6 class="mb-0">Upload</h6>
-            </div>
-            <div class="body p-3">
-                <div>
-                    <label>Upload Photos</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" (click)="fileInput.click()" #logo>
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button">Upload</button>
-                        </div>
-                    </div>
-                    <input #fileInput type="file" style="display:none" multiple #logo>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-6 col-md-3 col-xl-2 py-2">
-                        <div class="image">
-                            <img class="w-100" src="assets/images/resort.jpg">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <label class="my-1 mx-2">Status</label>
-                                <mat-slide-toggle checked="false"></mat-slide-toggle>
-                            </div>
-                            <div class="close-btn"><span class="material-icons">cancel</span></div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3 col-xl-2 py-2">
-                        <div class="image">
-                            <img class="w-100" src="assets/images/resort.jpg">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <label class="my-1 mx-2">Status</label>
-                                <mat-slide-toggle checked="false"></mat-slide-toggle>
-                            </div>
-                            <div class="close-btn"><span class="material-icons">cancel</span></div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3 col-xl-2 py-2">
-                        <div class="image">
-                            <img class="w-100" src="assets/images/resort.jpg">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <label class="my-1 mx-2">Status</label>
-                                <mat-slide-toggle checked="false"></mat-slide-toggle>
-                            </div>
-                            <div class="close-btn"><span class="material-icons">cancel</span></div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3 col-xl-2 py-2">
-                        <div class="image">
-                            <img class="w-100" src="assets/images/resort.jpg">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <label class="my-1 mx-2">Status</label>
-                                <mat-slide-toggle checked="false"></mat-slide-toggle>
-                            </div>
-                            <div class="close-btn"><span class="material-icons">cancel</span></div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3 col-xl-2 py-2">
-                        <div class="image">
-                            <img class="w-100" src="assets/images/resort.jpg">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <label class="my-1 mx-2">Status</label>
-                                <mat-slide-toggle checked="false"></mat-slide-toggle>
-                            </div>
-                            <div class="close-btn"><span class="material-icons">cancel</span></div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3 col-xl-2 py-2">
-                        <div class="image">
-                            <img class="w-100" src="assets/images/resort.jpg">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <label class="my-1 mx-2">Status</label>
-                                <mat-slide-toggle checked="false"></mat-slide-toggle>
-                            </div>
-                            <div class="close-btn"><span class="material-icons">cancel</span></div>
-                        </div>
-                    </div>
-                    <!-- <div class="col-6 col-md-3 col-xl-2 py-2">
-                        <div class="image">
-                            <img class="w-100" src="assets/images/resort.jpg">
-                        </div>
-                    </div> -->
-                </div>
-
-                <div class="col-lg-8 col-xl-6 px-0 mt-3">
-                    <label>Link Youtube Video</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="youtube_url">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button">Save</button>
-                        </div>
-                    </div>
-                    <ng-container>
-                        <iframe class="w-100 mt-3" height="315" src="https://www.youtube.com/embed/7Y6GrgSJnNQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </ng-container>
-                </div>
-            </div>
-        </div>
-    </mat-tab>
-    <mat-tab label="Booking">
-        <div class="box my-3 mx-2">
-            <div class="head p-3">
-                <h6 class="mb-0">Booking Status</h6>
-            </div>
-            <div class="body p-3">
-                <app-booking></app-booking>
-            </div>
-        </div>
-    </mat-tab>
-    <mat-tab label="Guests">
-        <div class="box my-3 mx-2">
-            <div class="head p-3">
-                <h6 class="mb-0">Guest Details</h6>
-            </div>
-            <div class="body p-3">
-                <app-guest></app-guest>
-            </div>
-        </div>
-    </mat-tab>
-</mat-tab-group>
+        </mat-tab>
+        <mat-tab label="Rooms">
+            <room-wrapper></room-wrapper>
+        </mat-tab>
+        <mat-tab label="Features">
+            <app-features></app-features>
+        </mat-tab>
+        <mat-tab label="Upload">
+            <upload></upload>
+        </mat-tab>
+    </mat-tab-group>
+</ng-container>

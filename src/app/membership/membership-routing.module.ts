@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AddVendorComponent } from './add-vendor/add-vendor.component';
 
 import { MembershipComponent } from './membership.component';
 
-const routes: Routes = [{ path: '', component: MembershipComponent }];
+const routes: Routes = [
+  { path: '', component: MembershipComponent },
+  { path: 'add-vendor', component: AddVendorComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

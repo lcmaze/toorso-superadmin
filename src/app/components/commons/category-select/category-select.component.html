@@ -1,0 +1,4 @@
+<select class="form-control" (change)="selectCategory($event)">
+    <option selected>Select Category</option>
+    <option *ngFor="let c of category" [value]="c.category_id">{{c.category_name}}</option>
+</select>

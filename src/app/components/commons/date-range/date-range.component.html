@@ -1,8 +1,8 @@
-<input *ngIf="displayval" type="text" class="form-control" placeholder="Date Range" (click)="toggledate()">
-<div *ngIf="!displayval" class="form-control" (click)="picker.open()">
-    <mat-date-range-input [rangePicker]="picker">
-        <input matStartDate placeholder="From" readonly style="cursor: pointer;">
-        <input matEndDate placeholder="To" readonly style="cursor: pointer;">
+<input *ngIf="!displayval" type="text" class="form-control" placeholder="Date Range" (click)="toggledate()">
+<div *ngIf="displayval" class="form-control" (click)="picker.open()">
+    <mat-date-range-input [rangePicker]="picker" [formGroup]="range">
+        <input matStartDate placeholder="From" style="cursor: pointer;" formControlName="start">
+        <input matEndDate placeholder="To" style="cursor: pointer;" formControlName="end" (dateChange)="selectedDate()">
     </mat-date-range-input>
 </div>
-<mat-date-range-picker #picker></mat-date-range-picker>
+<mat-date-range-picker #picker ></mat-date-range-picker>

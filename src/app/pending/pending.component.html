@@ -1,9 +1,9 @@
 <div class="row justify-content-between align-items-center mx-0">
     <div class="col-md-6 col-lg-3 px-0 mt-3">
-        <label class="mt-3">Pending Requests (10)</label>
+        <label class="mt-3">Pending Requests</label>
     </div>
     <div class="col-md-6 col-lg-3 px-0 mt-3">
-        <input type="text" class="form-control" placeholder="Search">
+        <!-- <input type="text" class="form-control" placeholder="Search"> -->
     </div>
 </div>
 
@@ -25,46 +25,25 @@
             <h6 class="mb-0">Action</h6>
         </div>
     </div>
-    <div class="tabl">
+    <div class="tabl" *ngFor="let p of pending">
         <div class="nam border-right">
-            <h6 class="mb-0">Athirapilly Resorts Resorts v v resorts kochi</h6>
+            <h6 class="mb-0">{{p.vendor_name}}</h6>
         </div>
         <div class="typ border-right">
-            <h6 class="mb-0">Hotels, Resorts & Homestays</h6>
+            <h6 class="mb-0" *ngIf="p.membership.category">{{p.membership.category.category_name}}</h6>
+            <h6 class="mb-0" *ngIf="!p.membership.category">---</h6>
         </div>
         <div class="location">
-            <h6 class="mb-0">Thrissur, Kerala</h6>
+            <h6 class="mb-0">{{p.city_info.city_name}}</h6>
         </div>
         <div class="status bg-warning">
             <h6 class="mb-0 text-white">Pending</h6>
         </div>
         <div class="action2 px-4">
-            <button mat-mini-fab color="accent" class="mr-2" routerLink="/membership">
+            <button mat-mini-fab color="accent" class="mr-2" (click)="selectMembership(p)">
                 <mat-icon>create</mat-icon>
             </button>
-            <button mat-mini-fab color="warn" class="mr-2">
-                <mat-icon>delete</mat-icon>
-            </button>
-        </div>
-    </div>
-    <div class="tabl">
-        <div class="nam border-right">
-            <h6 class="mb-0">Athirapilly Resorts Resorts v v resorts kochi</h6>
-        </div>
-        <div class="typ border-right">
-            <h6 class="mb-0">Hotels, Resorts & Homestays</h6>
-        </div>
-        <div class="location">
-            <h6 class="mb-0">Thrissur, Kerala</h6>
-        </div>
-        <div class="status bg-warning">
-            <h6 class="mb-0 text-white">Pending</h6>
-        </div>
-        <div class="action2 px-4">
-            <button mat-mini-fab color="accent" class="mr-2" routerLink="/membership">
-                <mat-icon>create</mat-icon>
-            </button>
-            <button mat-mini-fab color="warn" class="mr-2">
+            <button mat-mini-fab color="warn" class="mr-2" (click)="deleteVendor(p)">
                 <mat-icon>delete</mat-icon>
             </button>
         </div>

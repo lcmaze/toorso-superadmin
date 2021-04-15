@@ -5,7 +5,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -17,7 +17,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatTabsModule} from '@angular/material/tabs';
-
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [],
@@ -44,7 +44,11 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatSlideToggleModule,
     MatSnackBarModule,
     MatRadioModule,
-    MatTabsModule
+    MatTabsModule,
+    MatAutocompleteModule
+  ],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
   ]
 })
 export class MaterialModule { }
