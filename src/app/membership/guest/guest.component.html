@@ -1,0 +1,20 @@
+<div class="blocks">
+    <div class="row mx-0 justify-content-between">
+        <div class="col-md-4 px-0">
+            <label class="mr-2">Choose Date</label>
+            <div class="form-control" (click)="picker22.open()">
+                <mat-date-range-input [rangePicker]="picker22">
+                    <input matStartDate placeholder="From" readonly style="cursor: pointer;">
+                    <input matEndDate placeholder="To" readonly style="cursor: pointer;">
+                </mat-date-range-input>
+            </div>
+            <mat-date-range-picker #picker22></mat-date-range-picker>
+        </div>
+        <div class="col-md-4 px-0 d-flex align-items-end">
+            <select class="custom-select" id="inputGroupSelect01">
+                <option value="1">Show 10 Results</option>
+                <option value="1">Show 20 Results</option>
+            </select>
+        </div>
+    </div>
+</div>
