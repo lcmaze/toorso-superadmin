@@ -5,6 +5,7 @@ import { DeactivatedRoutingModule } from './deactivated-routing.module';
 import { DeactivatedComponent } from './deactivated.component';
 import { MaterialModule } from '../components/material/material.module';
 import { CommonsModule } from '../components/commons/commons.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { CommonsModule } from '../components/commons/commons.module';
     CommonModule,
     DeactivatedRoutingModule,
     MaterialModule,
-    CommonsModule
+    CommonsModule,
+    FormsModule
   ]
 })
 export class DeactivatedModule { }

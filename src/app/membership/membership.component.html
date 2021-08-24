@@ -38,7 +38,15 @@
                                 </div>
                                 <div class="textur" *ngIf="membership">
                                     <label>Membership Contract Period</label>
-                                    <app-date-range #dateRange [show-value]="true" (date)="membershipDate = $event" [date-input]="membershipContractPeriod"></app-date-range>
+                                    <!-- <app-date-range #dateRange [show-value]="true" (date)="membershipDate = $event" [date-input]="membershipContractPeriod"></app-date-range> -->
+                                    <input *ngIf="!displayval" type="text" class="form-control" placeholder="Date Range" (click)="displayVal = !displayVal">
+                                    <div *ngIf="displayval" class="form-control" (click)="picker.open()">
+                                        <mat-date-range-input [rangePicker]="picker" [formGroup]="membership_date_range">
+                                            <input matStartDate placeholder="From" style="cursor: pointer;" formControlName="start">
+                                            <input matEndDate placeholder="To" style="cursor: pointer;" formControlName="end" (dateChange)="selectedDate()">
+                                        </mat-date-range-input>
+                                    </div>
+                                    <mat-date-range-picker #picker ></mat-date-range-picker>
                                 </div>
                             </div>
                             <div class="col-md-6 p-3">
@@ -73,9 +81,23 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-12">
                                 <div class="textur mb-3">
                                     <label>Approved Subcategories</label>
                                     <div class="d-flex mb-2">
+                                        <div class="d-flex mr-2 align-items-center sub-category-option" *ngFor="let c of categories;let i = index">
+                                            <label class="m-0" [for]="'sub_category_id_' + i">{{c.category_name}} &nbsp;</label>
+                                            <input type="checkbox" [checked]="c.checked" [name]="'sub_cat_' + i" [id]="'sub_category_id_' + i" [value]="c.category_name" (change)="selectSubCategory($event)">
+                                        </div>
+                                    </div>
+                                    <!-- <div class="d-flex mb-2">
+                                        <select name="sub_cat" [(ngModel)]="subCategories" placeholder="Select Subcategory" class="form-control" multiple>
+                                            <option selected disabled>Press Ctrl to multiple select</option>
+                                            <option [value]="c.category_name" *ngFor="let c of categories">{{c.category_name}}</option>
+                                        </select>
+                                    </div> -->
+                                    <!-- <div class="d-flex mb-2">
                                         <input type="text" class="form-control mr-2" name="sub_cat" [(ngModel)]="subCategories">
                                         <button class="btn btn-dark" type="button" (click)="sub_categories.push(subCategories);subCategories = ''">Add</button>
                                     </div>
@@ -83,9 +105,9 @@
                                         <mat-chip *ngFor="let c of sub_categories;let i = index">{{c}}
                                             <mat-icon matChipRemove (click)="sub_categories.splice(i, 1)">cancel</mat-icon>
                                         </mat-chip>
-                                    </mat-chip-list>
+                                    </mat-chip-list> -->
                                 </div>
-                                <button class="btn btn-success mt-3 float-right" type="submit">Save</button>
+                                <button class="btn btn-success mt-3 float-right mb-4" type="submit">Save</button>
                             </div>
                         </div>
                     </div>

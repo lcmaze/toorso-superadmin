@@ -17,10 +17,11 @@ export class InfoComponent implements OnInit {
   constructor(private mainData: MainService, private http: HttpClient) { }
 
   ngOnInit() {
-    // this.getCountry();
+    this.selectedState = this.mainData.state;
+    this.getStates(this.selectedState.country_info.country_id);
+    this.getCities(this.selectedState.state_id);
     let state = this.mainData.selectedState.subscribe(data => {
       this.selectedState = data;
-      console.log(this.selectedState)
       this.getCities(this.selectedState.state_id);
     });
     if(this.mainData.selectedMembership){
@@ -50,15 +51,26 @@ export class InfoComponent implements OnInit {
   }
 
   vendor: any;
+  vendor_keywords: any = [];
+  vendor_keywords_single: any;
   getVendor(){
     if(this.mainData.vendorId){
       this.mainData.get(`api/super/get-vendor?id=${this.mainData.vendorId}`).subscribe(data => {
         this.vendor = data[Object.keys(data)[0]];
+        this.vendor_keywords = this.vendor.vendor_keywords ? this.vendor.vendor_keywords.split(',') : [];
         // console.log(this.vendor);
-        this.getStates(this.vendor.city_info.states_info.country_info.country_id);
-        this.getCities(this.vendor.city_info.states_info.state_id);
+        if(this.vendor.city_info) {
+          this.getStates(this.vendor.city_info.states_info.country_info.country_id);
+          this.getCities(this.vendor.city_info.states_info.state_id);
+        }
+        // else{this.getStates(this.vendor.city_info.states_info.country_info.country_id)}
       })
     }
+  }
+
+  deleteVendorKeywords(i: any){
+    console.log(this.vendor_keywords[i]);
+    this.vendor_keywords.splice(i, 1);
   }
 
   // states 
@@ -84,6 +96,7 @@ export class InfoComponent implements OnInit {
       await this.onMultipleSubmit().then(()=>{
         form.value['vendor_id'] = this.vendor.vendor_id;
         form.value['vendor_logo'] = this.vendor.vendor_logo;
+        form.value['vendor_keywords'] = this.vendor_keywords.toString();
         if(this.selectedCity){
           form.value['city_id'] = this.selectedCity.city_id;
         }

@@ -44,7 +44,7 @@ export class HeaderComponent implements OnInit {
     this.mainData.getCache(`api/get-countries`).subscribe(data => {
       this.countries = data;
       this.countries.forEach(country => {
-        if(country.country_id === 85) {
+        if(country.country_id === 221) {
           this.selectedcountry = country;
           this.mainData.selectedCountry.next(country);
           this.getStates(country.country_id);
@@ -59,9 +59,10 @@ export class HeaderComponent implements OnInit {
     this.mainData.getCache(`api/get-states?id=${id}`).subscribe(data => {
       this.states = data.rows;
       this.states.forEach(state => {
-        if(state.state_id === 1208) {
+        if(state.state_id === 4045) {
           this.selectedstate = state;
           this.mainData.selectedState.next(state);
+          this.mainData.state = state;
           // console.log(state);
         }
       })

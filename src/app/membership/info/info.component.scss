@@ -22,3 +22,16 @@ label {
         right: 10px;
     }
 }
+.text-checkbox-input{
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    input[type=text]{
+        flex-grow: 1;
+    }
+    input[type=checkbox]{
+        width: 20px;
+        height: 20px;
+        margin-left: 1rem;
+    }
+}

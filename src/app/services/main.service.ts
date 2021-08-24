@@ -27,7 +27,9 @@ export class MainService {
 
   selectedCountry: any = new Subject<any>();
   selectedState: any = new Subject<any>();
+  state: any;
   selectedDistrict: any = new Subject<any>();
+  selectedMainCategory: any = new Subject<any>();
 
   clientId: any;
 

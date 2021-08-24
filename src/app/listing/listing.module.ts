@@ -4,6 +4,7 @@ import { ListingRoutingModule } from './listing-routing.module';
 import { ListingComponent } from './listing.component';
 import { MaterialModule } from '../components/material/material.module';
 import { CommonsModule } from '../components/commons/commons.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { CommonsModule } from '../components/commons/commons.module';
     CommonModule,
     ListingRoutingModule,
     MaterialModule,
-    CommonsModule
+    CommonsModule,
+    FormsModule
   ]
 })
 export class ListingModule { }

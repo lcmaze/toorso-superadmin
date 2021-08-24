@@ -5,6 +5,7 @@ import { InactiveRoutingModule } from './inactive-routing.module';
 import { InactiveComponent } from './inactive.component';
 import { CommonsModule } from '../components/commons/commons.module';
 import { MaterialModule } from '../components/material/material.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { MaterialModule } from '../components/material/material.module';
     CommonModule,
     InactiveRoutingModule,
     MaterialModule,
-    CommonsModule
+    CommonsModule,
+    FormsModule
   ]
 })
 export class InactiveModule { }

@@ -26,3 +26,11 @@
     border-radius: 5px;
     margin: 1rem 0rem;
 }
+
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+    background-color: #0274b9;
+}
+
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+    background-color: #49a7e0;
+}

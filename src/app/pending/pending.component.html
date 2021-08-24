@@ -1,9 +1,11 @@
 <div class="row justify-content-between align-items-center mx-0">
     <div class="col-md-6 col-lg-3 px-0 mt-3">
-        <label class="mt-3">Pending Requests</label>
+        <label class="mt-3">Pending Requests ({{totalPending}})</label>
     </div>
     <div class="col-md-6 col-lg-3 px-0 mt-3">
-        <!-- <input type="text" class="form-control" placeholder="Search"> -->
+        <form #search="ngForm" (ngSubmit)="searchVendor(search)">
+            <input type="text" class="form-control" placeholder="Search.." name="search_val" ngModel>
+        </form>
     </div>
 </div>
 
@@ -12,9 +14,9 @@
         <div class="nam border-right">
             <h6 class="mb-0 text-danger">Name</h6>
         </div>
-        <div class="typ border-right">
+        <!-- <div class="typ border-right">
             <h6 class="mb-0">Type</h6>
-        </div>
+        </div> -->
         <div class="location border-right">
             <h6 class="mb-0">Location</h6>
         </div>
@@ -29,12 +31,13 @@
         <div class="nam border-right">
             <h6 class="mb-0">{{p.vendor_name}}</h6>
         </div>
-        <div class="typ border-right">
+        <!-- <div class="typ border-right">
             <h6 class="mb-0" *ngIf="p.membership.category">{{p.membership.category.category_name}}</h6>
             <h6 class="mb-0" *ngIf="!p.membership.category">---</h6>
-        </div>
+        </div> -->
         <div class="location">
-            <h6 class="mb-0">{{p.city_info.city_name}}</h6>
+            <h6 class="mb-0" *ngIf="p.city_info">{{p.city_info.city_name}}</h6>
+            <h6 class="mb-0" *ngIf="!p.city_info">--</h6>
         </div>
         <div class="status bg-warning">
             <h6 class="mb-0 text-white">Pending</h6>
@@ -48,5 +51,10 @@
             </button>
         </div>
     </div>
+    <mat-paginator *ngIf="pending && pending.length > 0" [length]="totalPending"
+        [pageSize]="limit"
+        [pageSizeOptions]="[25,50,100]"
+        (page)="loadMore($event)">
+    </mat-paginator>
 
 </section>

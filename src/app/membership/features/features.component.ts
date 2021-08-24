@@ -55,11 +55,13 @@ export class FeaturesComponent implements OnInit {
 
   facilities: any;
   getFacilities(){
-    this.mainData.get(`api/vendor/get-facilities?branch_id=${this.selectedBranch}`).subscribe(data => {
+    this.mainData.get(`api/super/get-facilities?branch_id=${this.selectedBranch}`).subscribe(data => {
       this.facilities = data['rows'];
       for (let i = 0; i < this.facilities.length; i++) {
         this.facilities[i]['checked'] = false;
-        if(this.facilities[i].branch_facility && this.facilities[i].branch_facility.branch_facility_id) this.facilities[i]['checked'] = true;
+        if(this.facilities[i].branch_facility && this.facilities[i].branch_facility.branch_facility_id) {
+          this.facilities[i]['checked'] = this.facilities[i].branch_facility.is_active;
+        }
         if(!this.facilities[i].branch_facility) {
           this.facilities[i].branch_facility = {}; 
           this.facilities[i].branch_facility['facility_type'] = 'free';
@@ -71,11 +73,13 @@ export class FeaturesComponent implements OnInit {
 
   transportations: any;
   getTransportations(){
-    this.mainData.get(`api/vendor/get-transportations?branch_id=${this.selectedBranch}`).subscribe(data => {
+    this.mainData.get(`api/super/get-transportations?branch_id=${this.selectedBranch}`).subscribe(data => {
       this.transportations = data['rows'];
       for (let i = 0; i < this.transportations.length; i++) {
         this.transportations[i]['checked'] = false;
-        if(this.transportations[i].branch_transportation && this.transportations[i].branch_transportation.branch_transportation_id) this.transportations[i]['checked'] = true;
+        if(this.transportations[i].branch_transportation && this.transportations[i].branch_transportation.branch_transportation_id) {
+          this.transportations[i]['checked'] = this.transportations[i].branch_transportation.is_active;
+        }
         if(!this.transportations[i].branch_transportation) {
           this.transportations[i].branch_transportation = {};
           this.transportations[i].branch_transportation['transportation_type'] = 'free';
@@ -85,11 +89,13 @@ export class FeaturesComponent implements OnInit {
   }
   foods: any;
   getFoods(){
-    this.mainData.get(`api/vendor/get-foods?branch_id=${this.selectedBranch}`).subscribe(data => {
+    this.mainData.get(`api/super/get-foods?branch_id=${this.selectedBranch}`).subscribe(data => {
       this.foods = data['rows'];
       for (let i = 0; i < this.foods.length; i++) {
         this.foods[i]['checked'] = false;
-        if(this.foods[i].branch_food && this.foods[i].branch_food.branch_food_id) this.foods[i]['checked'] = true;
+        if(this.foods[i].branch_food && this.foods[i].branch_food.branch_food_id) {
+          this.foods[i]['checked'] = this.foods[i].branch_food.is_active;
+        }
         if(!this.foods[i].branch_food) {
           this.foods[i].branch_food = {};
           this.foods[i].branch_food['food_type'] = 'free';

@@ -25,7 +25,7 @@ export class PromotionsComponent implements OnInit {
       this.promotions = data['rows'][Object.keys(data['rows'])[0]];
       // console.log(this.promotions);
       if(!this.promotions) {
-        this.promotions = { promotion_text: null, banner_color: '#c62828', product_id:  0, vendor_id: null, discount: null, image: 'no-image.png', start_date: null, end_date: null };
+        this.promotions = { promotion_text: null, banner_color: '#c62828', branch_id:  0, vendor_id: null, discount: null, image: 'no-image.png', start_date: null, end_date: null };
       }
       else{
         this.promotionDate['start'] = this.promotions.valid_date_start;
@@ -37,7 +37,7 @@ export class PromotionsComponent implements OnInit {
 
   products: any;
   getProducts(){
-    this.mainData.get(`api/vendor/get-all-products`).subscribe(data => {
+    this.mainData.get(`api/super/get-branches?id=${this.mainData.vendorId}`).subscribe(data => {
       this.products = data['rows'];
       // console.log(this.promotions);
     })
@@ -45,7 +45,7 @@ export class PromotionsComponent implements OnInit {
 
   // submit details
   async submitDetails(form: NgForm){
-    if(form.valid && form.value['product_id'] != 0 && this.promotionDate.start && this.promotionDate.end){
+    if(form.valid && form.value['branch_id'] != 0 && this.promotionDate.start && this.promotionDate.end){
       await this.onMultipleSubmit().then(()=>{
         console.log('updating..');
         form.value['promotion_id'] = 0;

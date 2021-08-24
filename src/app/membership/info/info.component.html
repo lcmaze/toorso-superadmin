@@ -23,7 +23,10 @@
             </div> -->
             <div class="mt-3">
                 <label>District</label>
-                <select class="custom-select" name="city_id" [(ngModel)]="vendor.city_info.city_id">
+                <select class="custom-select" name="city_id" *ngIf="!vendor.city_info" ngModel>
+                    <option [value]="c.city_id" *ngFor="let c of cities">{{c.city_name}}</option>
+                </select>
+                <select class="custom-select" name="city_id" *ngIf="vendor.city_info" [(ngModel)]="vendor.city_info.city_id">
                     <option [value]="c.city_id" *ngFor="let c of cities">{{c.city_name}}</option>
                 </select>
                 <!-- <label>District</label> -->
@@ -36,6 +39,7 @@
             <div class="mt-3">
                 <label><span class="material-icons mr-2">star</span>Star Value / Class</label>
                 <select class="custom-select" name="vendor_star_level" [(ngModel)]="vendor.vendor_star_level">
+                    <option value="0">None</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
@@ -59,11 +63,11 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label>Latitude</label>
-                        <input type="text" class="form-control" name="vendor_longitude" [(ngModel)]="vendor.vendor_longitude">
+                        <input type="text" class="form-control" name="vendor_latitude" [(ngModel)]="vendor.vendor_latitude">
                     </div>
                     <div class="col-md-6">
                         <label>Longtitude</label>
-                        <input type="text" class="form-control" name="vendor_latitude" [(ngModel)]="vendor.vendor_latitude">
+                        <input type="text" class="form-control" name="vendor_longitude" [(ngModel)]="vendor.vendor_longitude">
                     </div>
                 </div>
             </div>
@@ -73,15 +77,24 @@
 
             <div>
                 <label><span class="material-icons mr-2">call</span>Phone</label>
-                <input type="text" class="form-control" name="vendor_phone" [(ngModel)]="vendor.vendor_phone">
+                <div class="text-checkbox-input d-flex">
+                    <input type="text" class="form-control" name="vendor_phone" [(ngModel)]="vendor.vendor_phone">
+                    <input type="checkbox" class="form-control" name="show_phone" [(ngModel)]="vendor.show_phone">
+                </div>
             </div>
             <div class="mt-3">
                 <label><span class="material-icons mr-2">email</span>Email</label>
-                <input type="text" class="form-control" name="vendor_email" [(ngModel)]="vendor.vendor_email">
+                <div class="text-checkbox-input d-flex">
+                    <input type="text" class="form-control" name="vendor_email" [(ngModel)]="vendor.vendor_email">
+                    <input type="checkbox" class="form-control" name="show_email" [(ngModel)]="vendor.show_email">  
+                </div>
             </div>
             <div class="mt-3">
                 <label><span class="material-icons mr-2">public</span>Website</label>
-                <input type="text" class="form-control" name="vendor_website" [(ngModel)]="vendor.vendor_website">
+                <div class="text-checkbox-input d-flex">
+                    <input type="text" class="form-control" name="vendor_website" [(ngModel)]="vendor.vendor_website">
+                    <input type="checkbox" class="form-control" name="show_website" [(ngModel)]="vendor.show_website">
+                </div>
             </div>
             <div class="mt-3">
                 <label><span class="material-icons mr-2">home</span>Address - Line 1</label>
@@ -100,16 +113,31 @@
                 <input type="text" class="form-control" name="vendor_working_hours" [(ngModel)]="vendor.vendor_working_hours">
             </div>
             <div class="mt-3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Check in Time</label>
+                        <input type="text" class="form-control" name="checkin_time" [(ngModel)]="vendor.checkin_time">
+                    </div>
+                    <div class="col-md-6">
+                        <label>Check out Time</label>
+                        <input type="text" class="form-control" name="checkout_time" [(ngModel)]="vendor.checkout_time">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 p-2 px-md-3">
+            <div class="mt-3">
                 <label><span class="material-icons mr-2">settings</span>Specialize Keywords</label>
                 <div class="d-flex mb-2">
-                    <input type="text" class="form-control mr-2" placeholder="" name="vendor_keywords" [(ngModel)]="vendor.vendor_keywords">
-                    <!-- <button class="btn btn-dark">Add</button> -->
+                    <input type="text" class="form-control mr-2" placeholder="" name="vendor_keywords" [(ngModel)]="vendor_keywords_single">
+                    <button class="btn btn-dark" (click)="vendor_keywords.push(vendor_keywords_single);vendor_keywords_single = ''">Add</button>
                 </div>
 
-                <mat-chip-list *ngIf="vendor.vendor_keywords">
-                    <mat-chip *ngFor="let k of vendor.vendor_keywords.split(',')">
+                <mat-chip-list *ngIf="vendor_keywords">
+                    <mat-chip *ngFor="let k of vendor_keywords;let i = index" >
                         {{k}}
-                        <!-- <mat-icon matChipRemove>cancel</mat-icon> -->
+                        <mat-icon matChipRemove (click)="deleteVendorKeywords(i)">cancel</mat-icon>
                     </mat-chip>
                 </mat-chip-list>
             </div>
@@ -121,6 +149,19 @@
         </div>
 
         <div class="col-md-6 p-2 px-md-3">
+            <div class="mt-3">
+                <label>Show railway/airport</label>
+                <div class="d-flex">
+                    <div class="mr-3">
+                        <label for="railway_airport_one">Airport&nbsp;</label>
+                        <input type="radio" name="railway_airport" [(ngModel)]="vendor.railway_airport" id="railway_airport_one" [value]="0" [checked]="vendor.railway_airport">
+                    </div>
+                    <div class="mr-3">
+                        <label for="railway_airport_two">Railway&nbsp;</label>
+                        <input type="radio" name="railway_airport" [(ngModel)]="vendor.railway_airport" id="railway_airport_two" [value]="1" [checked]="vendor.railway_airport">
+                    </div>
+                </div>
+            </div>
             <div class="mt-3">
                 <label><span class="material-icons mr-2">flight</span>Near Airport</label>
                 <input type="text" class="form-control" name="near_airport" [(ngModel)]="vendor.near_airport">

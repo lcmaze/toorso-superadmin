@@ -1,18 +1,18 @@
 <div class="nav-header mb-1">
-    <div class="head">
-        <span class="filterfont pr-3">y</span>
-        <h4>Hotel Resort & Homestay</h4>
+    <div class="head" *ngIf="selectedMainCategory">
+        <!-- <span class="filterfont pr-3">y</span> -->
+        <h4>{{selectedMainCategory.m_category_name}}</h4>
     </div>
 </div>
 
 <div class="filter-box">
-    <li><a routerLink="/">Dashboard</a></li>
-    <li><a routerLink="/pending">Pending Requests</a></li>
-    <li><a routerLink="/inactive">Inactive Listing</a></li>
-    <li><a routerLink="/deactivated">Deactivated Listing</a></li>
-    <li><a routerLink="/listing">Manage Listing</a></li>
-    <li><a routerLink="/membership">Manage Membership</a></li>
-    <li><a routerLink="/settings">Extras</a></li>
+    <li><a routerLink="/" [ngClass]="view === 'dashboard' ? 'selected' : ''" (click)="view = 'dashboard'">Dashboard</a></li>
+    <li><a routerLink="/pending" [ngClass]="view === 'pending' ? 'selected' : ''" (click)="view = 'pending'">Pending Requests</a></li>
+    <li><a routerLink="/inactive" [ngClass]="view === 'inactive' ? 'selected' : ''" (click)="view = 'inactive'">Inactive Listing</a></li>
+    <li><a routerLink="/deactivated" [ngClass]="view === 'deactivated' ? 'selected' : ''" (click)="view = 'deactivated'">Deactivated Listing</a></li>
+    <li><a routerLink="/listing" [ngClass]="view === 'listing' ? 'selected' : ''" (click)="view = 'listing'">Manage Listing</a></li>
+    <li><a routerLink="/membership" [ngClass]="view === 'membership' ? 'selected' : ''" (click)="view = 'membership'">Manage Membership</a></li>
+    <li><a routerLink="/settings" [ngClass]="view === 'settings' ? 'selected' : ''" (click)="view = 'settings'">Extras</a></li>
     <!-- <li><a routerLink="/booking">Booking Status</a></li>
     <div class="sub">
         <li><a routerLink="/booking/guest">Guest Details</a></li>

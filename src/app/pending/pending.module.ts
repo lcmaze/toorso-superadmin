@@ -5,6 +5,7 @@ import { PendingRoutingModule } from './pending-routing.module';
 import { PendingComponent } from './pending.component';
 import { MaterialModule } from '../components/material/material.module';
 import { CommonsModule } from '../components/commons/commons.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { CommonsModule } from '../components/commons/commons.module';
     CommonModule,
     PendingRoutingModule,
     CommonsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ]
 })
 export class PendingModule { }

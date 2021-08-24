@@ -19,7 +19,7 @@ export class CategorySelectComponent implements OnInit {
 
   category: any;
   getDetails(){
-    this.mainData.get('api/get-categories').subscribe(data => {
+    this.mainData.get('api/get-main-category').subscribe(data => {
       this.category = data;
     })
   }

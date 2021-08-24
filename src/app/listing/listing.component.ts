@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MainService } from '../services/main.service';
 
@@ -18,12 +19,32 @@ export class ListingComponent implements OnInit {
   listing: any;
   page: any = 1;
   limit: any = 25;
+  totalPending: any;
+  name: any = '';
   getDetails(){
-    this.mainData.get(`api/super/get-vendors-list?page=${this.page}&limit=${this.limit}`).subscribe(data => {
+    this.mainData.get(`api/super/get-vendors-list?page=${this.page}&limit=${this.limit}${this.name}`).subscribe(data => {
       if(data){
-        this.listing = data;
+        this.totalPending = data['count'];
+        this.listing = data['rows'];
       }
     })
+  }
+
+  loadMore(ev:any){
+    // console.log(ev);
+    this.page = ev.pageIndex + 1;
+    this.limit = ev.pageSize;
+    this.mainData.get(`api/super/get-vendors-list?page=${this.page}&limit=${this.limit}${this.name}`).subscribe(data => {
+      this.listing = data['rows'];
+    })
+  }
+
+  searchVendor(form: NgForm){
+    if(form.valid){
+      // console.log(form.value);
+      this.name = `&name=${form.value.search_val}`;
+      this.getDetails();
+    }
   }
 
   getBgStyle(obj: any){
