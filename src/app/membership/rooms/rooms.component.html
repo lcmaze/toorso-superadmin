@@ -2,19 +2,19 @@
     <div class="edit-box">
         <form #productForm="ngForm" *ngIf="product">
             <div class="cnt px-3" [ngStyle]="style()">
-                <div class="row mt-3">
+                <div class="row mx-0 mt-3">
                     <div class="col-md-6 px-4 pb-3" style="border-right: 1px solid #eaeaea">
                         <div class="d-flex">
                             <label class="mr-2" style="white-space:nowrap;" *ngIf="id">Room Type {{id}}</label>
                             <label class="mr-2" style="white-space:nowrap;" *ngIf="!id">Room Type 1</label>
                             <input type="text" class="form-control" name="room_type" [(ngModel)]="product.room_type" required>
                         </div>
-            
+
                         <div>
                             <label>Subtitle</label>
                             <input type="text" class="form-control" name="subtitle" [(ngModel)]="product.subtitle" required>
                         </div>
-            
+
                         <div class="row mt-3">
                             <div class="col-md-3 col-lg-2">
                                 <div>
@@ -49,39 +49,39 @@
                                 </div>
                             </div>
                         </div>
-            
+
                         <p class="mb-0 mt-4">Add Room numbers</p>
                         <div class="d-flex mt-1 mb-3">
                             <input type="text" class="form-control mr-2" placeholder="Add Room Number" name="room_numbers_val" [(ngModel)]="roomNumberVal">
                             <button class="btn btn-dark" (click)="addArrayVal(1)">Add</button>
                         </div>
-            
+
                         <mat-chip-list *ngIf="roomNumber">
                             <mat-chip *ngFor="let r of roomNumber; let i = index">
                                 {{r}}
                                 <mat-icon matChipRemove (click)="removeArrayVal(1, i)">cancel</mat-icon>
                             </mat-chip>
                         </mat-chip-list>
-            
+
                         <p class="mb-0 mt-4">Add Room Amenities</p>
                         <div class="d-flex mt-1 mb-3">
                             <input type="text" class="form-control mr-2" placeholder="Add Room Amenities" name="room_amenities_val" [(ngModel)]="roomAmenitiesVal">
                             <button class="btn btn-dark" (click)="addArrayVal(2)">Add</button>
                         </div>
-            
+
                         <mat-chip-list *ngIf="roomAmenities">
                             <mat-chip *ngFor="let r of roomAmenities; let i = index">
                                 {{r}}
                                 <mat-icon matChipRemove (click)="removeArrayVal(2, i)">cancel</mat-icon>
                             </mat-chip>
                         </mat-chip-list>
-            
+
                         <p class="mb-0 mt-4">Add Highlited Features</p>
                         <div class="d-flex mt-1 mb-3">
                             <input type="text" class="form-control mr-2" placeholder="Add Highlited Features" name="highlited_features_val" [(ngModel)]="highlitedFeaturesVal">
                             <button class="btn btn-dark" (click)="addArrayVal(3)">Add</button>
                         </div>
-            
+
                         <mat-chip-list *ngIf="highlitedFeatures">
                             <mat-chip *ngFor="let r of highlitedFeatures; let i = index">
                                 {{r}}
@@ -89,7 +89,7 @@
                             </mat-chip>
                         </mat-chip-list>
                     </div>
-            
+
                     <div class="col-md-6 px-0">
                         <div class="px-4" *ngIf="product_prices">
                             <div>
@@ -98,7 +98,7 @@
                                     <div class="col-md-3 px-1" style="max-width: 80px;">
                                         <input class="form-control" style="height:100%;" type="text" placeholder="Price" name="price_one" [(ngModel)]="product_prices.price_one">
                                     </div>
-            
+
                                     <div class="col px-1" style="max-width:220px; min-width: 200px;">
                                         <div class="form-control" (click)="picker_one.open()">
                                             <mat-date-range-input [rangePicker]="picker_one">
@@ -108,20 +108,20 @@
                                         </div>
                                         <mat-date-range-picker #picker_one></mat-date-range-picker>
                                     </div>
-            
+
                                     <div class="col px-1">
                                         <input class="form-control" style="height:100%;" type="text" placeholder="Text" name="prices_text_one" [(ngModel)]="product_prices.text_one">
                                     </div>
                                 </div>
                             </div>
-            
+
                             <div class="mt-3">
                                 <label>Room Price - Off Season</label>
                                 <div class="row px-2">
                                     <div class="col-md-3 px-1" style="max-width: 80px;">
                                         <input class="form-control" style="height:100%;" type="text" placeholder="Price" name="price_two" [(ngModel)]="product_prices.price_two">
                                     </div>
-            
+
                                     <div class="col px-1" style="max-width:220px; min-width: 200px;">
                                         <div class="form-control" (click)="picker_two.open()">
                                             <mat-date-range-input [rangePicker]="picker_two">
@@ -131,20 +131,20 @@
                                         </div>
                                         <mat-date-range-picker #picker_two></mat-date-range-picker>
                                     </div>
-            
+
                                     <div class="col px-1">
                                         <input class="form-control" style="height:100%;" type="text" placeholder="Text" name="prices_text_two" [(ngModel)]="product_prices.text_two">
                                     </div>
                                 </div>
                             </div>
-            
+
                             <div class="mt-3">
                                 <label>Room Price - Special Occasion 1</label>
                                 <div class="row px-2">
                                     <div class="col-md-3 px-1" style="max-width: 80px;">
                                         <input class="form-control" style="height:100%;" type="text" placeholder="Price" name="price_three" [(ngModel)]="product_prices.price_three">
                                     </div>
-            
+
                                     <div class="col px-1" style="max-width:220px; min-width: 200px;">
                                         <div class="form-control" (click)="picker_three.open()">
                                             <mat-date-range-input [rangePicker]="picker_three">
@@ -154,20 +154,20 @@
                                         </div>
                                         <mat-date-range-picker #picker_three></mat-date-range-picker>
                                     </div>
-            
+
                                     <div class="col px-1">
                                         <input class="form-control" style="height:100%;" type="text" placeholder="Text" name="prices_text_three" [(ngModel)]="product_prices.text_three">
                                     </div>
                                 </div>
                             </div>
-            
+
                             <div class="mt-3">
                                 <label>Room Price - Special Occasion 2</label>
                                 <div class="row px-2">
                                     <div class="col-md-3 px-1" style="max-width: 80px;">
                                         <input class="form-control" style="height:100%;" type="text" placeholder="Price" name="price_four" [(ngModel)]="product_prices.price_four">
                                     </div>
-            
+
                                     <div class="col px-1" style="max-width:220px; min-width: 200px;">
                                         <div class="form-control" (click)="picker_four.open()">
                                             <mat-date-range-input [rangePicker]="picker_four">
@@ -177,20 +177,20 @@
                                         </div>
                                         <mat-date-range-picker #picker_four></mat-date-range-picker>
                                     </div>
-            
+
                                     <div class="col px-1">
                                         <input class="form-control" style="height:100%;" type="text" placeholder="Text" name="prices_text_four" [(ngModel)]="product_prices.text_four">
                                     </div>
                                 </div>
                             </div>
-            
+
                             <div class="mt-3">
                                 <label>Room Price - Special Occasion 3</label>
                                 <div class="row px-2">
                                     <div class="col-md-3 px-1" style="max-width: 80px;">
                                         <input class="form-control" style="height:100%;" type="text" placeholder="Price" name="price_five" [(ngModel)]="product_prices.price_five">
                                     </div>
-            
+
                                     <div class="col px-1" style="max-width:220px; min-width: 200px;">
                                         <div class="form-control" (click)="picker_five.open()">
                                             <mat-date-range-input [rangePicker]="picker_five">
@@ -200,7 +200,7 @@
                                         </div>
                                         <mat-date-range-picker #picker_five></mat-date-range-picker>
                                     </div>
-            
+
                                     <div class="col px-1">
                                         <input class="form-control" style="height:100%;" type="text" placeholder="Text" name="prices_text_five" [(ngModel)]="product_prices.text_five">
                                     </div>

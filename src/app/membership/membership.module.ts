@@ -13,10 +13,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PromotionsComponent } from './promotions/promotions.component';
 import { UploadComponent } from './upload/upload.component';
 import { RoomWrapperComponent } from './room-wrapper/room-wrapper.component';
+import { BookingsComponent } from './bookings/bookings.component';
 
 
 @NgModule({
-  declarations: [MembershipComponent, InfoComponent, RoomsComponent, FeaturesComponent, AddVendorComponent, PromotionsComponent, UploadComponent, RoomWrapperComponent],
+  declarations: [MembershipComponent, InfoComponent, RoomsComponent, FeaturesComponent, AddVendorComponent, PromotionsComponent, UploadComponent, RoomWrapperComponent, BookingsComponent],
   imports: [
     CommonModule,
     MembershipRoutingModule,

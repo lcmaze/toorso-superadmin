@@ -46,7 +46,7 @@
                                             <input matEndDate placeholder="To" style="cursor: pointer;" formControlName="end" (dateChange)="selectedDate()">
                                         </mat-date-range-input>
                                     </div>
-                                    <mat-date-range-picker #picker ></mat-date-range-picker>
+                                    <mat-date-range-picker #picker></mat-date-range-picker>
                                 </div>
                             </div>
                             <div class="col-md-6 p-3">
@@ -135,6 +135,9 @@
         </mat-tab>
         <mat-tab label="Upload">
             <upload></upload>
+        </mat-tab>
+        <mat-tab label="Bookings">
+            <app-bookings></app-bookings>
         </mat-tab>
     </mat-tab-group>
 </ng-container>
